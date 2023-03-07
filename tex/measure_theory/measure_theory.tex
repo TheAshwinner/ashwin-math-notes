@@ -594,7 +594,19 @@ Lemma 1.2.15 describes properties of Lebesgue measure.
 Rewrite this summary and answer a few of the questions. 
 
 \subsubsection{Non-measurable sets}
+The purpose of this section is to describe the notion of non-Lebesgue-measurable sets, give a few examples while showing that they aren't measureable by Lebesgue sets, and the providing some additional exercises.
+Note that there is a theorem showing that without the axiom of choice, all sets in $\mathbf{R}^n$ are Lebesgue measureable, which implies that any proof showing that a set is non-measurable must use the axiom of choice.
 
+Proposition 1.2.18: \textcolor{red}{TODO}: rewrite this section more clearly
+
+This example is the first construction of a non-Lebesgue-measurable set.
+The rough intuition basically says the following:
+Consider the set $[0,1]$.
+Take all of the rational numbers $C =\mathbf{Q} \cap [0,1]$.
+What is the Lebesgue measure of this set?
+The key contradiction happens if you notice that $[0,1] = \bigcup_{x} C + x: x \in \mathbf{R}$, for some uncountably many $x$.
+Now, if $m(C) = 0$, then $m([0,1])=0$, but if $m(C)>0$, then $m([0,1]) = \infty$. 
+There is no way to apply a consistent measure here. 
 
 \section{Resources}
 Terence Tao: \href{https://terrytao.files.wordpress.com/2012/12/gsm-126-tao5-measure-book.pdf}{Introduction to Measure Theory}, \href{https://math.solverer.com/library/terence_tao/an_introduction_to_measure_theory}{Solutions to exercises}\\
