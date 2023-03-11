@@ -39,16 +39,6 @@ Then note that if $n \to \infty$, $n \cdot 0 \not \to \infty \cdot 0$.
     \item \textcolor{red}{EXPECT} Monotone convergence theorem and fundamental convergence theorem.
 \end{itemize}
 
-
-\textbf{Exercise 0.0.1} If $(x_{\alpha})_{\alpha \in A} x_{\alpha}$
- is a collection of numbers $x_{\alpha} \in [0, +\infty]$
- such that $\sum_{\alpha \in A}x_{\alpha}< \infty$,
- show that $x_{\alpha}=0$ for all
- but at most countably many $\alpha$.
- \begin{solution}
-     This is the same problem as why the sum of uncountably many positive numbers is infinite. (This isn't a real proof)
- \end{solution}
-
 \section{Chapter 1: Measure Theory}
 
 \subsection{Chapter 1.1: Prologue: The problem of measure}
@@ -155,25 +145,6 @@ For example, most 2-dimensional shapes that we care about are not elementary mea
 Roughly, this is because you cannot approximate sets that don't look box-like using elementary sets.
 (This is a non-rigorous explanation: its worth taking the time to prove each of these individually.)
 That being said, we will use what we have learned about elementary measures to construct more useful measures.
-\\ \\
-\textbf{Exercise 1.1.1} Boolean closure
-\begin{solution}\\
-Union is obvious.\\
-Consider intersection of $E \cap F$ where $E = \bigcup_i E_i$, $F = \bigcup_j F_j$ and each $E_i, F_j$ are boxes.
-Then clearly $E \cap F = \bigcup_{i,j}(E_i \cap F_j)$.
-I claim that the intersection of any 2 boxes is also a box, which will show that $E \cap F$ is elementary. \\
-We can divide any elementary set into a finite number of small enough boxes so that the set theoretic difference should still be an elementary set.\\
-Same for symmetric difference.\\
-Translation is obvious, easy to prove.
-\end{solution}
-\textbf{Lemma 1.1.2} Measure of an elementary set 
-\begin{solution}
-This seems fairly obvious and intuitive: proving (i) really only requires showing that the union of 2 boxes can be expressed as the finite union of disjoint boxes, and by induction the rest is done. 
-This is a bit of a tedious proof but the basic idea is to split the boxes $A,B$ into $2^d$ mini-boxes, where $d$ is the number of dimensions, in such a way that $A\cap B$ is a minibox and each of $A,B$ have 7 disjoint mini-boxes. 
-These 15 miniboxes will form a disjoint union of boxes that make up $E \cup F$. \\
-(ii) Skipped because boring, tedious.
-Tao's proof for this part is slightly strange
-\end{solution}
 
 Tao presents a potential notion of measure with 
 \begin{equation}
@@ -193,27 +164,7 @@ The reason why this doesn't hold is that there is no reason to expect the limit 
 For example, consider any fractal: the measure under this definition will never converge. 
 Vitali set is another example, probably.
 Additionally it wouldn't satify translation invariance.\\
-Some properties this does satisfy: $m(\bigcup E_i) \leq \sum_i m(E_i)$, $m(E+x) = m(E)$ for all elementary sets $E$ (sets that can be measured without needing to take the limit) and $x\i$\\ \\
-\textbf{Exercise 1.1.3} Uniqueness of elementary measure
-\begin{solution}
-    From the problem formulation, we have the following properties of $m'$: 
-    \[
-        \begin{aligned}
-        \forall E, m'(E) &\geq 0\\
-        \forall E_1, E_2, m'(E_1\sqcup E_2) &= m'(E_1)+m'(E_2)\\
-        \forall E, m'(E+x) &= m'(E): x \in R^d
-        \end{aligned}
-    \]
-    Let's consider $c:=m'([0,1)^d)$. 
-    Then $m'([0,\frac{1}{n})^d) = \frac{c}{n^d}$ by the second property and third properties: 
-    we can split up $[0,1)^d$ into $n^d$ disjoint pieces whose total measure equals the measure of $[0,1)^d$.
-    By translational invariance, all of those pieces must each have the same measure so we have $m'([0,\frac{1}{n})^d) = \frac{c}{n^d}$.\\
-    Technically this proof is incomplete, as I still need to show that for any box $E$, $m'(E) = cm(E)$.
-    This isn't trivial but it's mildly tedious and I didn't believe I'd be learning anything so I skipped it. 
-    The interesting part here is dealing with boxes of real but not rational side lengths. 
-    The intuition here is that we just need to ensure that they match the actual measure, such as by taking the limit of many rationally sized boxes.\\
-    \href{https://math.solverer.com/library/terence_tao/an_introduction_to_measure_theory/exercise_1-1-3}{Additional solution here}
-\end{solution}
+Some properties this does satisfy: $m(\bigcup E_i) \leq \sum_i m(E_i)$, $m(E+x) = m(E)$ for all elementary sets $E$ (sets that can be measured without needing to take the limit) and $x\i$
 \subsubsection{1.1.2 Jordan Measure}
 For defining new measures, there are 3 important pieces: what sets are measurable, how is a measure assigned to a set, and what desirable properties are satisfied by the measure.
 As a quick preview:
@@ -245,45 +196,6 @@ This Jordan inner measure is a lower bound on the Jordan measure of a set.
 If the two quantities are equal ($m_{\star, J}(E) = m^{\star, J}(E)$), we say that a set is Jordan measurable.
 The Jordan measure is then $m(E) = m_{\star, J}(E) = m^{\star, J}(E)$.
 
-The following exercise shows some equivalent descriptions of Jordan measurability.
-\\ \\
-\textbf{Exercise 1.1.5} Characterization of Jordan Measurability.
-Let $E \subset \mathbf{R}^d$ be a bounded set.
-We want to show the following:
-\begin{enumerate}
-    \item E is Jordan measurable
-    \item For any $\epsilon>0$, there exists elementary sets $A \subset E \subset B$ such that $m(B/A) \leq \epsilon$.
-    \item For any $\epsilon > 0$, there is an elementary set $C$ such that $m^{\star, (J)}(A \triangle E) \leq \epsilon$, where $A \triangle E = (A/E) \cup (E/A)$
-\end{enumerate}
-\begin{solution}\\
-    First, I'll show $(1) \rightarrow (2)$. 
-    If $E$ is Jordan measurable, then $m(E) = m_{\star,(J)}(E)=m^{\star,(J)}(E)$. 
-    This implies that 
-    \[
-        \forall \epsilon >0, \exists A,B: m(E)- \epsilon \leq m(A), m(E)+\epsilon \geq m(B)
-    \]
-    In other words, 
-    \[
-        m(E)-m(A) \leq \epsilon, m(B)-m(E) \leq \epsilon.
-    \] 
-    It can be shown that
-    \[
-        m(E/A) \leq \epsilon, m(B/E) \leq \epsilon
-    \]
-    Note that 
-    \[
-        m(B/A) \leq m(B/E) + m(E/A) \leq 2\epsilon
-    \]
-    We are done, since we can just pick a new $\epsilon^{\star}=\frac{\epsilon}{2}$
-    \\
-    $(2) \rightarrow (1)$ can be shown in a very similar manner.
-    \\ \\
-    To show $(1) \rightarrow (3)$, consider some elementary set $C$.
-    From $(2)$, find elementary sets $A,B: m(B/E)\leq \frac{\epsilon}{2}, m(E/A) \leq \frac{\epsilon}{2}$.
-    Now, let $C'= C \cup A \cap B$. We know that this resulting set must still be elementary since elementary sets are closed under finite unions and intersections.
-    Note that $m(C \triangle E) \leq \epsilon$ since $A \subseteq C \subseteq B$.
-\end{solution}
-
 At this point, the textbook goes into depth to describe many of the properties of Jordan measurable sets.
 I highly recommend anyone looking to get a much stronger intution about the properties of Jordan sets to work through the exercises described in the book.
 Exercise 1.1.6 describes the intuitive properties of measures that Jordan measures satisfy (including Boolean closure, non-negativity, monotonicity, finite additivity, translation invariance, etc).
@@ -304,108 +216,6 @@ In general, sets that have many 'holes' or have a 'fractal-like' structure will 
     \item \textcolor{red}{CONFUSION}: why does 1.1.18 imply that a set and its closure are not Jordan measurable if they have the same outer measure?
 \end{itemize}
 
-\textbf{Exercise 1.1.6} Jordan measurability inherits properties of elementary measure
-\begin{solution} TODO\\
-\textbf{Boolean closure}
-\begin{itemize}
-    \item $E \cup F$: There must be some $A_E \subset E \subset B_E, A_F \subset F \subset B_F$ such that $m(B_E/A_E) < \frac{\epsilon}{2}, m(B_F/A_F)<\frac{\epsilon}{2}$. 
-    Take $A_E \cup A_F, B_E \cup B_F$.
-    We have the following:
-    \[
-        \begin{aligned}
-            \epsilon &> m(B_E/A_E) + m(B_F/A_F)\\
-            &\geq m(B_E/A_E \cup B_F/A_F) \\
-            &\geq m((B_E \cup B_F)/(A_E \cup A_F))
-        \end{aligned}
-    \]
-    where the second inequality holds from the property of finite subadditivity of elementary sets (measure of union of two sets is less than or equal the sum of measures of sets)
-    and the last inequality holds from the monotonicity property (subsets have smaller measures than their supersets).
-    \begin{itemize}
-        \item \textcolor{red}{Alternate solution} \href{https://math.solverer.com/library/terence_tao/an_introduction_to_measure_theory/exercise_1-1-6}{here}. 
-        They don't even bother working with the measures of set unions directly, they use a different but equivalent formulation of Jordan sets ($m(B)-m(A) < \epsilon$). 
-        This results in much simpler proofs that don't bother using the finite subadditivity property at all.
-    \end{itemize}
-    \item $E \cap F$:
-    \[
-        \begin{aligned}
-            m(B_E \cap B_F) - m(A_E \cap A_F) &= 
-            (m(B_E)-m(B_E/(B_E/B_F))) - (m(A_E)-m(A_E/(A_E/A_F))) \\
-            &= (m(B_E)-m(A_E)) - (m(B_E/(B_E/B_F)) - m(A_E/(A_E/A_F))) \\
-            &\leq m(B_E)-m(A_E) \\
-            &\leq \epsilon
-        \end{aligned}
-    \]
-    \item $E/F$:
-    \[
-        \begin{aligned}
-            m(B_E/B_F)-m(A_E/A_F) &=
-            m(B_E)-m(B_E \cap B_F) - (m(A_E)-m(A_E \cap A_F)) \\
-            &= (m(B_E)-m(A_E))-(m(B_E \cap B_F)-m(A_E \cap A_F)) \\
-            &\leq m(B_E)-m(A_E)\\
-            &\leq \epsilon
-        \end{aligned}
-    \]
-\end{itemize}
-\textbf{Non-negative:} $m(E) \geq m(A_E) \geq 0$.\\
-\textbf{Finite additivity:} we have $A_E \subset E \subset B_E, A_F \subset F \subset B_F$. 
-Then $m(A_E) \leq m(E) \leq m(B_E), m(A_F) \leq m(F) \leq m(B_F)$. 
-Note that $A_E, A_F$ are necessarily disjoint and we must be able to find some $B_E, B_F$ that are also disjoint (if there is no such $B_E, B_F$, then $E,F$ cannot be disjoint).
-Then we have that $m(A_E)+m(A_F) = m(A_E \sqcup A_F)$, $ m(B_E)+m(B_F) = m(B_E \sqcup B_F)$. But this means that $m(E)+m(F)=m(E \sqcup F)$, as desired. 
-\end{solution}
-\textbf{Exercise 1.1.7}
-\begin{solution}\\
-(1): Let's start with the simplest case here where $d=1$ and then work our way into higher dimensions. 
-We want to show that $E = \{(x, f(x)): x \in B\}$ is Jordan-measurable.
-So we want to show for all $\epsilon >0$, we want to find elementary sets $E_L,E_U$ such that $E_L \subset E \subset E_U$ such that $m(E_U/E_L)<\epsilon$. What will end up happening is that we will have $E_U$ cover $E$ while $E_L$ will be the null set.\\
-Since $B$ is a compact set and $f$ is continuous, we know that $f$ is uniformly continuous: namely $\forall \epsilon_f >0, \exists \delta_f>0$ such that all points within a distance of $\delta_f$ from some $x$, the function will be within $\epsilon_f$ from $f(x)$.
-In other words $||y-x||_2< \delta_f \implies |f(y)-f(x)| < \epsilon_f$.\\
-Essentially what we want to do here is cover $E$ with a finite number of elementary sets (boxes) such that the total measure it takes up is less than $\epsilon$, for any possible $\epsilon$. This will be $E_U$\\
-Let's take $k$ as the side length of the boxes $E_i$ that we want to use to cover $E$. 
-If every point in $E_i$ is within $\delta_f$ from one another, then the functions at those points must be within $\epsilon_f$ from one another.
-To achieve this, we can set $\delta_f > k$.
-Note that until this point, we didn't use the fact that $d=1$ anywhere: we can generalize this expression to $\delta_f > \sqrt{dk^2} = k\sqrt{d}$ for $d$-dimensional boxes (which agrees with the previous expression for $d=1$).\\
-The resulting measure should be upper bounded by $nk^d\epsilon_f$, where $n$ is the number of $k$-boxes needed to cover $B$. 
-This is because we have $n$ boxes each with measure $k^d$ whose 'height' corresponding to the $d+1$ dimension (the dimension that function $f$ maps to) must be at most $\epsilon_f$.
-In other words, $m(E_U) \leq nk^d\epsilon_f$.
-$m(E_L) = 0$, where we just take the null set.\\
-Now let's find $n$ and $k$.
-Notice that if the dimensions of $B$ are $b_1, b_2, ..., b_d$, then $n = \lceil \frac{b_1}{k} \rceil \lceil \frac{b_2}{k} \rceil ... \lceil \frac{b_d}{k} \rceil$. 
-For simplicity's sake, we can just set $b= \max(b_1,b_2,..., b_d)+1$ such that $n \leq \frac{b^d}{k^d}$.
-Now we have that $m(E_U) \leq \frac{b^d}{k^d}k^d\epsilon_f = b^d \epsilon_f$. However, note that $b$ is a constant, and therefore we can set $\epsilon_f$ as small as we want. This means $m(E_u) < \epsilon$, and we're done.
-To summarize the last few steps, we have the following:
-\[
-    \begin{aligned}
-        m(E_U) &\leq nk^d\epsilon_f\\
-        &\leq \ \lceil \frac{b_1}{k} \rceil \lceil \frac{b_2}{k} \rceil ... \lceil \frac{b_d}{k} \rceil k^d \epsilon_f \\
-        &\leq \frac{b^d}{k^d}k^d \epsilon_f \\
-        &= b^d \epsilon_f\\
-        &< \epsilon
-    \end{aligned}
-\]
-
-(2) I'll demonstrate that the set is Jordan measurable when $d=1$.
-First notice that we still have uniform continuity.
-Since the set is uniformly continuous, $\forall \epsilon > 0, \exists \delta > 0$ such that $\forall x,y \in \mathbf{R}, |x-y| < \delta \implies |f(x)-f(y)| < \epsilon$.
-\end{solution}
-
-\textbf{Exercise 1.1.8} Some examples where Jordan measurability is weak/breaks down.
-\begin{solution}
-    Quick sketch of proof of (1): all we want to do is show that the outer measures of $E$ and $\overline{E}$, where the latter is the closure of $E$, have the same outer measure.
-    We only consider the closed outer measures $B, \overline{B}$ since closed and open elementary sets have the same measure anyways.
-    The outer measure of the latter will provide an outer measure for the former.
-    For the reverse direction, we want to show that any element $x$ on the closure of $E$ but not within $E$ itself will still be covered by $B$, the outer measure of $E$.
-    The main interesting detail here seems to be the fact that for any such $x$, there is no $\epsilon >0$ such that the minimum distance $d(x, m)>\epsilon$.
-    Since this is the case, the infimum of the distance from $B$ must be 0 and as a result $x \in B$.
-    Therefore, the closure is within $B$.
-    Since $B$ and $\overline{B}$ both cover $E, \overline{E}$, they must have the same Jordan outer measure.
-
-    Quick notes on (4): For any elementary set that's a subset of $[0,1]^2$, there will exist an element in $\mathbf{Q}^2$ unless the set is empty. 
-    So inner measure is 0.
-    Any super set needs to contain basically all of $[0,1]^2$ meaning it has a measure 1.
-    Therefore it is not Jordan measure-able.
-    The same situation for the 'bullets'.
-\end{solution}
-
 \subsubsection{1.1.3 Connection with the Riemann integral.}
 Quick sketch of what the Riemann integral looks like: TODO
 \begin{itemize}
@@ -416,30 +226,6 @@ Quick sketch of what the Riemann integral looks like: TODO
     The rest should be fairly straightforward to prove.
     \item \textcolor{blue}{TODO}: 1.1.21, 1.1.25, 1.1.26  
 \end{itemize}
-
-\textbf{Exercise 1.1.25} Area interpretation of Riemann integral
-\begin{solution}
-    Rough sketch:
-    We can show this in the case that $f$ is non-negative.
-    When $f$ can be negative, there must be some partition of the function into negative and non-negative domains.
-    After this point, the same will hold. (probably).
-
-    Assume that $f$ is non-negative.
-    Let's assume that $E_+$ is Jordan-measurable.
-    This means that $\forall \epsilon >0$ there is $A_+ \subset E_+ \subset B_+$ with $A_+, B_+$ being elementary sets and $m(B_+/A_+) < \epsilon$.
-    We want to use the Darboux integral here because once we can show something is Darboux integrable, it is also immediately Jordan integrable.
-    Essentially we can partition the domain where $A_+, B_+$ are finite piecewise functions on the domain.
-    $A_+$ serves as the lower Darboux integral while $B_+$ serves as the upper Darboux integral.
-    Since we know that $m(B_+/A_+) < \epsilon$, we can show that for all $\epsilon > 0$, we can find functions such that the upper and lower Darboux integrals differ by less than $\epsilon$.
-    This is enough to finish the proof as this implies that the two Darboux integrals are equivalent and that this function is Darboux integrable.
-    The measure is then equal to the Darboux integral. \\ \\
-
-    Notes about strategies for how best to prove this:
-    start as simple as possible (constant functions and boxes),
-    progress to slightly harder sets (piecewise constant functions and elementary sets)
-    progress to harder sets (Jordan measurable sets)
-\end{solution}
-
 
 \subsection{1.2 Lebesque measure}
 As mentioned previously, the primary reason that we want to develop Lebesgue measures is because there are many sets that we care about that are not Jordan measurable.
@@ -455,29 +241,6 @@ As it turns out, this outer measure will not satisfy some properties that we wou
 But if we restrict the domain to the 'Lebesgue-measurable' sets, we're able to get many desirable properties that we are looking for.
 This will be how we define the Lebesgue measure.
 Note that there is a distinction between the Lebesgue measure and Lebesgue outer measure: the latter can be applied on more sets than the former but as a result some useful properties that the former possesses is missing from the latter.
-\\ \\
-\textbf{Exercise 1.2.1} Union and intersection of countable Jordan measurable sets is not necessarily Jordan measurable
-\begin{solution}
-    Sketch: Think of a counterexample where countable elements start behaving strangely with regards to measures.
-    One should immediately think about $\mathbf{Q}$ and $[0,1]$.
-    In this case, for unions, consider the union of rational numbers $q$.
-    For intersections, consider the intersection of $q \cap [0,1]$.
-    Both behave the same way.
-\end{solution}
-
-\textbf{Exercise 1.2.2 Pointwise convergence}
-\begin{solution}
-    Sketch: note that nearly all problems of these kinds should lead you to think about sets involving rational numbers.
-    In this case, consider 
-    \[
-    f_n(x)=
-        \begin{cases}
-        1 \text{ if } x \in {q_i: 1 \leq i \leq n} \\
-        0
-        \end{cases}
-    \]
-    This sequences of functions will be Jordan measurable for all finite $n$ yet converges to a non-Riemann integrable function.
-\end{solution}
 
 \subsubsection{Properties of Lebesgue outer measures}
 We first define how the Lebesgue outer measure is assigned to the set.
@@ -546,23 +309,6 @@ Lemma 1.2.6 shows that the Lebesgue outer measure of an elementary set agrees wi
     \end{itemize}
 \end{itemize}
 
-\textbf{Exercise 1.2.3 The outer measure axioms}
-\begin{solution}
-    i) (Empty set) The empty set can be covered by any countable union of boxes, so the infimum would have measure 0, as expected.\\
-    ii) (Monotonicity) Let's say that we have some set of boxes $B_1, B_2, ... : \bigcup_{n=1}^{\infty}B_n \supset F$.
-    Then necessarily, $\bigcup_{n=1}^{\infty}B_n \supset E$.
-    Therefore $m^{\star}(F) = \inf \sum_{n=1}^{\infty}|B_n| \geq m^{\star}(E)$.\\
-    iii) \textcolor{red}{CONFUSION} I actually don't understand this proof at all: I don't understand where/how axiom of choice is used.
-    The proof in the solutions guide also doesn't explain how Tonelli's theorem for series is used in the proof properly.
-\end{solution}
-\textbf{Lemma 1.2.6} Lebesgue outer measure of elementary set agrees with elementary set.
-\begin{solution}
-    Postmortem:
-    Didn't even consider Heine-Borel.
-    I did consider the $\epsilon$ trick, but absent an actual strategy, I was mostly fumbling around.
-    Also I was not aware that elementary sets could be open versus closed.
-    Or that it really mattered.
-\end{solution}
 Interesting note: it's often harder to prove lower bounds on infimums than upper bounds, which makes sense.
 
 There are some details involving Lebesgue outer measures and finite additivity:
