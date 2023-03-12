@@ -3,7 +3,7 @@
 \usepackage{hyperref}
 \usepackage{amsmath,empheq}
 \usepackage{float}
-
+\usepackage{enumitem}
 
 \title{Measure Theory Notes}
 \author{Ashwin Sreevatsa}
@@ -354,6 +354,33 @@ What is the Lebesgue measure of this set?
 The key contradiction happens if you notice that $[0,1] = \bigcup_{x} C + x: x \in \mathbf{R}$, for some uncountably many $x$.
 Now, if $m(C) = 0$, then $m([0,1])=0$, but if $m(C)>0$, then $m([0,1]) = \infty$. 
 There is no way to apply a consistent measure here. 
+
+\subsection{The Lebesgue integral}
+\textcolor{red}{TODO:} Key questions to answer:
+\begin{itemize}[noitemsep]
+    \item How does the Lebesgue integrals work?
+    \item What can be done with Lebesgue integrals that can't be done with Riemann integrals?
+    \item Are Lebesgue integrals consistent with Riemann integrals?
+\end{itemize}
+
+
+Rough notes:
+\begin{itemize}[noitemsep]
+    \item Absolute convergence: The summation condition of $\sum_{n=1}^{\infty}|c_n| < \infty$ implies that partial sums $\sum_{n=1}^{\infty} c_n$ converges.
+    \item Conditional convergence doesn't have absolute values: $\sum_{n=1}^{\infty}c_n$ converging doesn't imply $\sum_{n=1}^{\infty}|c_n|$ also converges.
+    \item \textcolor{red}{TODO:} I'm not entirely sure why this analogy was introduced.
+    \item \textcolor{red}{CONFUSION:} Follow up on why absolutely Lebesgue-integrable functions can be infinite on Lebesgue measure 0 sets?
+    \item \textcolor{red}{CONFUSION:} There tends to be some strange asymmetry in certain formulations of concepts: 
+    for example outer measures are more useful than inner measures and lower Darboux integrals might be more useful than upper Darboux integrals w.r.t. defining a Lebesgue measure.
+    I'm pretty sure the origins of this is described in one of the earlier sections, but it's worth explicitly understanding why this is the case.
+    \item Currently assuming that we are going to a very similar thing to how we defined the Lebesgue measure: start with Darboux integral, add countably infinite pieces, get Lebesgue integral (similar to starting with Jordan measure, adding countably infinite sets and getting the Lebesgue measure).
+    \item It seems like the current goal is to develop a theory of unsigned Lebesgue integrals followed by absolutely convergent Lebesgue integrals.
+    In section 1.4, a bunch more convergence theorems get defined. 
+    (Fatou's lemma, monotone convergence theorem, dominated convergence theorem, etc).
+    \item Lebesgue integral, measures are an extension (a 'completion') on top of Riemann integrals/ Jordan sets.
+    Interesting discussion about what this exactly means. (p50)
+    \item
+\end{itemize}
 
 \section{Resources}
 Terence Tao: \href{https://terrytao.files.wordpress.com/2012/12/gsm-126-tao5-measure-book.pdf}{Introduction to Measure Theory}, \href{https://math.solverer.com/library/terence_tao/an_introduction_to_measure_theory}{Solutions to exercises}\\
