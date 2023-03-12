@@ -379,8 +379,47 @@ Rough notes:
     (Fatou's lemma, monotone convergence theorem, dominated convergence theorem, etc).
     \item Lebesgue integral, measures are an extension (a 'completion') on top of Riemann integrals/ Jordan sets.
     Interesting discussion about what this exactly means. (p50)
-    \item
+    \item \textcolor{red}{TODO:} I'm still confused about the notion of 'almost everywhere'. (Definition 1.3.5)
+    I'd like to see examples of sets that are technically different but are equal almost everywhere.
+    \item \textcolor{red}{CONFUSION} Why is the union of countably many null sets still a null set but the union of uncountably many null sets not necessariy a null set?
+    I understand the examples of this but I'm curious about what the underlying reason for this might be.
+    My current best guess is that uncountable unions of measurable sets isn't really defined (because it results in weird stuff like this).
 \end{itemize}
+
+\subsubsection{Integration of simple functions}
+Simple functions on 1 dimension with 1 Lebesgue-measuarable set: $f=c_11_{E_1}$.
+So basically $f(x) = c_1: x \in E_1$.
+For example, let's consider $c_1 =3, E_1 = [0,1]$.
+Then, \[f(x) = \begin{cases}
+    3: 0 \leq x \leq 1 \\
+    0: \text{otherwise}
+\end{cases}\]
+
+Simple functions on multiple dimensions with 1 Lebesgue measurable set will be a similar situation, except with a more complex body than $[0,1]$.
+Simple functions on 1 dimension with multiple Lebesgue measurable sets should describe many more complicated graphs with more than 2 piecewise values.
+Simple functions on multiple dimensions with multiple Lebesgue measureable sets should be a similar extension.
+\textcolor{red}{TODO}: It would be worth taking the time to draw many more simple functions just to make sure you really know what's going on here.
+
+When he says that the space $Simp(\mathbf{R}^d)$ is a complex vector space, he's saying that the functions themselves form a vector space: ie, you can have a field with the elements being functions.
+Unsigned simple functions can take constants $c_k \in [0, \infty]$ meaning that the space of $Simp^{+}(\mathbf{R}^d)$ is a module (because $\infty$ has no multiplicative inverse and therefore the space cannot be a vector space).
+
+\textcolor{blue}{Note}: it doesn't seem like the definition Lebesgue integral itself using countably infinitely many Lebesgue measurable sets: I think the countability comes from the sets itself.
+
+Key insight: $\int_{\mathbf{R}^d}1_E(x)dx = m(E)$.
+We can extend this to any simple functions very easily: $\int_{\mathbf{R}^d} g(x) dx = c_1 m(E_1) + ... + c_k m(E_k)$.
+\textcolor{red}{TODO}: we still need to make sure that different representations of $g$ will still have the same measure (lemma 1.3.4).
+
+Definition 1.3.5: 
+\textcolor{red}{CONFUSION} A countable union of null sets will still be a null set, so if there is a countable set of properties that hold almost everywhere, they union of those properties will also hold almost everywhere.
+
+Exercise 1.3.1 gives some properties of the simple unsigned integral.
+Definition 1.3.6 introduces the notion of absolutely convergent simple integral.
+Exercise 1.3.2 gives some properties of complex-valued simple integrals.
+
+Functions that are defined almost everwhere (often due to divide by 0 errors) can often be extended to being defined everywhere by some methods.
+This is apparently useful for analysis since many functions that people care about are only defined almost everywhere.
+Functional analysis apparently does some interesting stuff here: considering functions that are almost equal as equivalence classes.
+I didn't really understand remark 1.3.7.
 
 \section{Resources}
 Terence Tao: \href{https://terrytao.files.wordpress.com/2012/12/gsm-126-tao5-measure-book.pdf}{Introduction to Measure Theory}, \href{https://math.solverer.com/library/terence_tao/an_introduction_to_measure_theory}{Solutions to exercises}\\
