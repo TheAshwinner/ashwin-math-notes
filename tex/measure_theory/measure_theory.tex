@@ -368,11 +368,14 @@ Rough notes:
 \begin{itemize}[noitemsep]
     \item Absolute convergence: The summation condition of $\sum_{n=1}^{\infty}|c_n| < \infty$ implies that partial sums $\sum_{n=1}^{\infty} c_n$ converges.
     \item Conditional convergence doesn't have absolute values: $\sum_{n=1}^{\infty}c_n$ converging doesn't imply $\sum_{n=1}^{\infty}|c_n|$ also converges.
+    \item Note: limit of unsigned infinite sum will always exist because the values are all non-negative so they cannot oscilate.
+    As a result, they either approach some value or go to infinity.
     \item \textcolor{red}{TODO:} I'm not entirely sure why this analogy was introduced.
     \item \textcolor{red}{CONFUSION:} Follow up on why absolutely Lebesgue-integrable functions can be infinite on Lebesgue measure 0 sets?
     \item \textcolor{red}{CONFUSION:} There tends to be some strange asymmetry in certain formulations of concepts: 
     for example outer measures are more useful than inner measures and lower Darboux integrals might be more useful than upper Darboux integrals w.r.t. defining a Lebesgue measure.
     I'm pretty sure the origins of this is described in one of the earlier sections, but it's worth explicitly understanding why this is the case.
+    \textcolor{red}{TODO}: actually play around with this and try and see why using the inner measure or the upper Darboux doesn't work.
     \item Currently assuming that we are going to a very similar thing to how we defined the Lebesgue measure: start with Darboux integral, add countably infinite pieces, get Lebesgue integral (similar to starting with Jordan measure, adding countably infinite sets and getting the Lebesgue measure).
     \item It seems like the current goal is to develop a theory of unsigned Lebesgue integrals followed by absolutely convergent Lebesgue integrals.
     In section 1.4, a bunch more convergence theorems get defined. 
@@ -387,7 +390,7 @@ Rough notes:
 \end{itemize}
 
 \subsubsection{Integration of simple functions}
-Simple functions on 1 dimension with 1 Lebesgue-measuarable set: $f=c_11_{E_1}$.
+Simple functions on 1 dimension with 1 Lebesgue-measuarable set: $f=c_1 1_{E_1}$.
 So basically $f(x) = c_1: x \in E_1$.
 For example, let's consider $c_1 =3, E_1 = [0,1]$.
 Then, \[f(x) = \begin{cases}
@@ -402,6 +405,11 @@ Simple functions on multiple dimensions with multiple Lebesgue measureable sets 
 
 When he says that the space $Simp(\mathbf{R}^d)$ is a complex vector space, he's saying that the functions themselves form a vector space: ie, you can have a field with the elements being functions.
 Unsigned simple functions can take constants $c_k \in [0, \infty]$ meaning that the space of $Simp^{+}(\mathbf{R}^d)$ is a module (because $\infty$ has no multiplicative inverse and therefore the space cannot be a vector space).
+
+Note on ``One easy consequence fo this is that if $f$ is a complex-vlaued simple function, then its absolute value is an unsigned simple function.''
+If you decompose the measurable sets that make up a simple function such that the sets that make up the function are disjoint, the function will be constant on every set.
+This means that you can just take the absolute value on every disjoint set and find an unsigned simple function.
+\textcolor{red}{TODO}: I'm unsure what it means for a function to not be a simple function, and why that might imply that the absolute value is not an unsigned simple function.
 
 \textcolor{blue}{Note}: it doesn't seem like the definition Lebesgue integral itself using countably infinitely many Lebesgue measurable sets: I think the countability comes from the sets itself.
 
