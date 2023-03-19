@@ -232,12 +232,20 @@ Since the set is uniformly continuous, $\forall \epsilon > 0, \exists \delta > 0
 
 \textbf{Exercise 1.2.3 The outer measure axioms}
 \begin{solution}
-    i) (Empty set) The empty set can be covered by any countable union of boxes, so the infimum would have measure 0, as expected.\\
-    ii) (Monotonicity) Let's say that we have some set of boxes $B_1, B_2, ... : \bigcup_{n=1}^{\infty}B_n \supset F$.
-    Then necessarily, $\bigcup_{n=1}^{\infty}B_n \supset E$.
-    Therefore $m^{\star}(F) = \inf \sum_{n=1}^{\infty}|B_n| \geq m^{\star}(E)$.\\
-    iii) \textcolor{red}{CONFUSION} I actually don't understand this proof at all: I don't understand where/how axiom of choice is used.
-    The proof in the solutions guide also doesn't explain how Tonelli's theorem for series is used in the proof properly.
+    \begin{enumerate}
+        \item (Empty set) 
+        We'd like to prove that $m^{\star}(\emptyset)$ = 0, where $m^{\star}$ is the Lebesgue outer measure.
+        Recall that the definition of the Lebesgue outer measure of set $E$ is the following: \[m^{\star}(E):= \inf_{\bigcup_{n=1}^{\infty} B_n \supset E; B_1, B_2, \cdots \text{ boxes}} \sum_{n=1}^{\infty}|B_n|\]
+        If $E=\emptyset$, then we can consider the set of boxes $B_i=\emptyset$.
+        $|B_i| = 0$, so $m^{\star}(\emptyset) \leq \sum_{n=1}^{\infty}0 = 0$.
+        Also recall that $m^{\star}$ is a non-negative function, which means that $m^{\star}(\emptyset) \geq 0$.
+        This means that $m^{\star}(\emptyset) = 0$.
+        \item (Monotonicity) Let's say that we have some set of boxes $B_1, B_2, \cdots : \bigcup_{n=1}^{\infty}B_n \supset F$.
+        Then necessarily, $\bigcup_{n=1}^{\infty}B_n \supset E$.
+        Therefore $m^{\star}(F) = \inf \sum_{n=1}^{\infty}|B_n| \geq m^{\star}(E)$.
+        \item \textcolor{red}{CONFUSION} I actually don't understand this proof at all: I don't understand where/how axiom of choice is used.
+        The proof in the solutions guide also doesn't explain how Tonelli's theorem for series is used in the proof properly.
+    \end{enumerate}
 \end{solution}
 \textbf{Lemma 1.2.6} Lebesgue outer measure of elementary set agrees with elementary set.
 \begin{solution}
@@ -248,7 +256,48 @@ Since the set is uniformly continuous, $\forall \epsilon > 0, \exists \delta > 0
     Or that it really mattered.
 \end{solution}
 
+\textbf{Lemma 1.2.9} Outer measure of countable unions of almost disjoint boxes
+\begin{solution}
+What does interior, exterior actually mean?
+I might need to try formalizing this a few different ways
+
+We already have that it holds for a finite number of almost disjoint boxes.
+What changes when we get from the finite case to countable case?
+Any examples of this sort of proof?
+
+Postmortem:
+I was attempting to solve this problem using induction.
+There seems to be some interesting discussions on why these sorts of proofs shouldn't generally work \href{https://math.stackexchange.com/questions/1872716/induction-countable-union-of-countable-sets}{here}.
+The key idea seems to be that while induction can show that some property holds for any finite value, it doesn't necessarily mean that the proof holds for a countably infinite number of values, because there is no finite $n$ such that $n+1$ is countably infinite.
+\end{solution}
+
 \subsubsection{Lebesgue measurability}
+\textbf{Lemma 1.2.13} Existence of Lebesgue measureable sets.
+\begin{solution}
+Attempt 1:
+
+Before we begin, recall the definition of Lebesgue measureable sets:
+If set $E$ is Lebesgue measureable, then for all $\epsilon>0$, there exists an open set $U \in \mathbf{R}^d$ with $U \supset E$ such that $m^{\star}(U/E) \leq \epsilon$. 
+\begin{enumerate}
+    \item \textbf{Every open set is Lebesgue measureable.}
+    Clearly if $E$ is open, then just take $U=E$ which will guarantee that $U$ is open, $U \supset E$ and $m^{\star}(U/E)=m^{\star}(\emptyset) = 0 \leq \epsilon$.
+    \item \textbf{Every closed set is Lebesgue measureable.}
+    It seems like I don't have a good notion of what a closed set actually is.
+    It seems like this would be different from part 5.
+    
+    Idea: closed sets in $\mathbf{R}^d$ are compact. 
+    This means that we can find some open cover of nope this doesn't work.
+    
+    \item \textbf{Every set of Lebesgue outer measure zero is measureable.}
+    One idea: if we can find an open set $E_2$ with measure 0 and we know that the union of $E$ (the original outer measure 0 set) and $E_2$ is also open, then $U=E \cup E_2$.
+    \item \textbf{The empty set $\emptyset$ is Lebesgue measureable.}
+    We can find open sets with arbirarily small Lebesgue measures that will always be a superset of the empty set.
+    Essentially find some $U: m^{\star}(U) \leq \epsilon$.
+    \item \textbf{If $E \subset \mathbf{R}^d$ is Lebesgue measurable, then so is its complement $\mathbf{R}^d/E$}
+    \item \textbf{If $E_1, E_2, \cdots \subset \mathbf{R}^d$ are a sequence of Lebesgue measurable sets, then the union $\bigcup_{n=1}^{\infty}E_n$ is Lebesgue measurable.}
+    \item \textbf{If $E_1, E_2, \cdots \subset \mathbf{R}^d$ are a sequence of Lebesgue measurable sets, then the intersection $\bigcap_{n=1}^{\infty}E_n$ is Lebesgue measurable.}
+\end{enumerate}
+\end{solution}
 
 \subsubsection{Non-measurable sets}
 
