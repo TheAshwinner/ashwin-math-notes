@@ -6,6 +6,8 @@
 \usepackage{enumitem}
 \usepackage[normalem]{ulem}
 
+\newcommand{\TODO}{\textcolor{red}{TODO:}}
+
 \title{Neural Tangent Kernels Notes}
 \author{Ashwin Sreevatsa}
 \date{March 2023}
@@ -30,7 +32,11 @@ We're initially considering the following linear regression model:
     \item Function: $f(w,x) = w^t x$. 
     \item Loss function: \[\min \frac{1}{2} \sum_{i=1}^n { (y_i - w^t \phi(x_i))}^2\]
     \item Gradient descent update:
-    \[ W(t+1) = W(t) - \mu_t \triangle L(W_t) \]
+    \[ \begin{aligned}
+        W(t+1) &= W(t) - \eta_t \nabla L(W_t) \\
+        &= W(t) - \eta_t \sum_{i=1}^{n} (f(w,x_i)-y_i) \nabla_w f(w_t, x_i)
+        \end{aligned}
+    \]
 \end{itemize}
 
 Kernel method:
@@ -50,10 +56,36 @@ Now, why is this not good enough?
     The non-linearity $\phi$ can in theory be powerful enough to overcome this, I think.
     \item (answers): nonlinearity $\phi$ is fixed.
     How do we know what nonlinearity to use for a problem?
-    (\textcolor{red}{TODO}: Why is this a problem?)
-    \item (answers):
+    (\TODO{} Why is this a problem?)
+    \item (answers): $D$ might be very large, so it might suffer from curse of dimensionality.
 \end{itemize}
 
+The kernel trick basically attempts to circumvent the problem of actually looking at every value in $\phi(x)$ by just considering a closed-form solution for $K(x_i,x_j) = \langle \phi(x_1),\phi(x_2) \rangle$.
+(Often this is all we care about, as opposed to the exact values of $\phi(x)$.)
+\TODO{} Why is Kernel matrix positive semi-definite?
+What does this imply?
+\TODO{} What are some examples of the kernel trick (SVMs, ridge regression, PCA, etc)?
+
+Neural networks:
+\begin{itemize}
+    \item Gradient with respect to loss function changes
+    (This corresponds to the $\nabla_w f(w_t, x_i)$ term which stays fixed in the linear regression case.)
+    \item Lazy learning: when the width of a neural network is high, model weights change very slowly.
+    \TODO{} why does it depend on $m$ (the width of the neural network)?
+    This is an emperical observation.
+    \item \TODO{} make sure I understand how the Taylor expansion work?
+    \TODO{} Why is it linear in $w$ and non-linear in $x$?
+    \TODO{} Taylor expansions for vector functions
+\end{itemize}
+
+Neural tangent kernel uses the nonlinearity $\phi(x) = \nabla_w f(w_0,x)$.
+This means that the kernel is $k(x_1,x_2) = \langle \nabla_w f(w_0,x_1), \nabla_w f(w_0,x_2) \rangle$
+Note that this is the linear approximation of the Taylor expansion of the vector function (hence `Tangent')
+
+\TODO{} Why does the gradient update not change for each timestep? (41:57)
+Ok key clarification is here: $\nabla_w f$ describes the gradient of a function with respect to $w$.
+We then evaluate the function at $(w_0,x)$.
+This means that the gradient won't change even as the function is proceeding on its trajectory.
 
 \section{Resources}
 \begin{itemize}
