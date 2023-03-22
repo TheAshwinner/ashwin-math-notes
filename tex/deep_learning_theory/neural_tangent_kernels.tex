@@ -1,0 +1,64 @@
+\documentclass[answers,12pt]{exam}
+\usepackage[utf8]{inputenc, xcolor}
+\usepackage{hyperref}
+\usepackage{amsmath,empheq}
+\usepackage{float}
+\usepackage{enumitem}
+\usepackage[normalem]{ulem}
+
+\title{Neural Tangent Kernels Notes}
+\author{Ashwin Sreevatsa}
+\date{March 2023}
+
+\begin{document}
+
+\maketitle
+\setcounter{section}{-1}
+
+\section*{Quick Remarks}
+This doc contains my notes regarding neural tangent kernels, and other assorted deep learning theory-related notes.
+
+\section{Preface}
+
+\section{Neural Tangent Kernels}
+
+\subsection{Soheil Feizi Notes \href{https://www.youtube.com/watch?v=DObobAnELkU}{(link)}}
+
+We're initially considering the following linear regression model: 
+\begin{itemize}
+    \item Data: ${\{(x_i,y_i)\}}_{i=1}^n, y_i \in \mathbf{R}, x_i \in \mathbf{R}^d$
+    \item Function: $f(w,x) = w^t x$. 
+    \item Loss function: \[\min \frac{1}{2} \sum_{i=1}^n { (y_i - w^t \phi(x_i))}^2\]
+    \item Gradient descent update:
+    \[ W(t+1) = W(t) - \mu_t \triangle L(W_t) \]
+\end{itemize}
+
+Kernel method:
+
+\begin{itemize}
+    \item $x \in \mathbf{R}^d \to \phi(x_i) \in \mathbf{R}^D$.
+    $D >> d$.
+\end{itemize}
+The function to be minimized is the following:
+Note that this is also a convex function.
+
+Now, why is this not good enough?
+(We have non-linearity and convexity.)
+\begin{itemize}
+    \item \sout{The function is linear in the weights, meaning it has limited expressivity?
+    There's no reason that $f$ is the best model.}
+    The non-linearity $\phi$ can in theory be powerful enough to overcome this, I think.
+    \item (answers): nonlinearity $\phi$ is fixed.
+    How do we know what nonlinearity to use for a problem?
+    (\textcolor{red}{TODO}: Why is this a problem?)
+    \item (answers):
+\end{itemize}
+
+
+\section{Resources}
+\begin{itemize}
+    \item 
+\end{itemize}
+
+
+\end{document}
