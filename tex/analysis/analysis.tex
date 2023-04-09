@@ -8,7 +8,6 @@
 \usepackage{todonotes}
 \usepackage[normalem]{ulem}
 
-\newcommand{\TODO}{\textcolor{red}{TODO:}}
 
 \title{Analysis Notes}
 \author{Ashwin Sreevatsa}
@@ -17,11 +16,47 @@
 \begin{document}
 
 \maketitle
-\setcounter{section}{-1}
 
 \section*{Quick Remarks}
 This doc contains my notes as I'm working through Terence Tao's Analysis 1 (Fourth edition).
+It turns out that measure theory tends to use a lot of ideas and concepts from analysis.
+My fundamentals with analysis are slightly non-existent so I'm working through this text to build a much stronger foundation.
+I'm also working through the exercises in a separate file.
+
 
 \section{Preface}
+Real analysis is the study of real numbers, functions, sequences, and series.
+This is in contrast with complex analysis, which is the study of complex numbers, functions, etc, harmonic analysis, which is the study of Fourier series and Fourier analysis, and funcitonal analysis, which is studies functions and their properties in infinite dimensional spaces.
+
+The reason real analysis is worth studying is because there are a lot of rules and properties covered in topics like calculus that I haven't understood from first principles.
+For example, concepts like limits, derivatives, integrals, convergence, etc often have a lot of hand-wavy explanations when covered for the first time.
+This is probably the correct way to handle these intro courses, but as you start to see more examples of functions, sequences, etc, it becomes clear that rules, properties, and theorems that we have been taught in a non-rigorous manner often have very specific conditions and assumptions behind them.
+It's often very easy to come up with examples that break our intuition if we haven't studying the topic from a rigorous point of view.
+
+Tao goes into painstaking detail describing a number of scenarios where intuition is insufficient to resolve strange paradoxes.
+For example, consider a sequence like the following sum: $1 - 1 + 1 - 1 + 1 \dots$.
+What is this sum equal to?
+On one hand, you can group up the sums in the following way:
+$(1 - 1) + (1 - 1) + (1 - 1) \dots = 0$ (maybe?).
+But we can also do something similar like the following:
+$1 + (-1 + 1) + (-1 + 1) \dots = 1$ (maybe?).
+But you can also take $S = 1 - 1 + 1 - 1 \dots$.
+By rearranging the infinite sum, we can find that $S = 1 - S$ and so $S = \frac{1}{2}$.
+Clearly something is going wrong.
+
+Another example might look like the following where $x$ is a real number.
+$\lim_{m \rightarrow \infty} x^m$.
+Consider $n+1 = m$.
+Then $\lim_{m \rightarrow \infty} x^m = \lim_{n+1 \rightarrow \infty} x^{n+1}$.
+But $n+1 \rightarrow \infty \implies n \rightarrow \infty$, so maybe we can say that $\lim_{n+1 \rightarrow \infty} x^{n+1} = \lim_{n \rightarrow \infty} x^{n+1}$.
+But then we find a situation where $\lim_{m \rightarrow \infty} x^m =  \lim_{n \rightarrow \infty} x^{n+1} = x \lim_{n \rightarrow \infty} x^{n}$.
+If we let $L = \lim_{m \rightarrow \infty} x^m $, we have $L = xL$.
+Cancelling $L$ gives us that any real number $x$ is 1.
+Something must be going wrong with how we are applying the rules of arithmetic with the rules of limits.
+
+For more fun examples like these, I definitely recommend taking a look at the text directly.
+
+A common theme here is that once you start working with infinities, many previously defined properties of numbers, operations, sequences, etc that hold fine in the finite case break down. 
+To understand when rules will hold fine and when they break down (and require additional patching to work), a more fundamental, rigorous approach is needed.
 
 \end{document}
