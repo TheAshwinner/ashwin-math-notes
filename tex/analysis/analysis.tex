@@ -24,11 +24,11 @@ My fundamentals with analysis are slightly non-existent so I'm working through t
 I'm also working through the exercises in a separate file.
 
 
-\section{Preface}
+\section{Introduction}
 Real analysis is the study of real numbers, functions, sequences, and series.
-This is in contrast with complex analysis, which is the study of complex numbers, functions, etc, harmonic analysis, which is the study of Fourier series and Fourier analysis, and funcitonal analysis, which is studies functions and their properties in infinite dimensional spaces.
+This is in contrast with complex analysis, which is the study of complex numbers, functions, etc, harmonic analysis, which is the study of Fourier series and Fourier analysis, and functional analysis, which is studies functions and their properties in infinite dimensional spaces.
 
-The reason real analysis is worth studying is because there are a lot of rules and properties covered in topics like calculus that I haven't understood from first principles.
+The reason real analysis is worth studying is because there are a lot of rules and properties covered in topics like calculus that aren't explained from first principles.
 For example, concepts like limits, derivatives, integrals, convergence, etc often have a lot of hand-wavy explanations when covered for the first time.
 This is probably the correct way to handle these intro courses, but as you start to see more examples of functions, sequences, etc, it becomes clear that rules, properties, and theorems that we have been taught in a non-rigorous manner often have very specific conditions and assumptions behind them.
 It's often very easy to come up with examples that break our intuition if we haven't studying the topic from a rigorous point of view.
@@ -58,5 +58,22 @@ For more fun examples like these, I definitely recommend taking a look at the te
 
 A common theme here is that once you start working with infinities, many previously defined properties of numbers, operations, sequences, etc that hold fine in the finite case break down. 
 To understand when rules will hold fine and when they break down (and require additional patching to work), a more fundamental, rigorous approach is needed.
+
+\section{Starting at the Beginning: The Natural Numbers}
+The first few chapters of the text construct number systems one at a time.
+The eventual goal is to start with the natural numbers, move on to integers, then rationals, then reals, then complex. 
+(Or $\mathbf{N} \rightarrow \mathbf{Z} \rightarrow \mathbf{Q} \rightarrow \mathbf{R} \rightarrow \mathbf{C}$). 
+This chapter starts with the natural numbers $\mathbf{N}$, or all the non-negative integers $0, 1, 2, \dots$. 
+Following this, the chapter then defines addition and multiplication on the natural numbers, along with a number of properties about these operations that we take for granted.
+
+This chapter introduces natural numbers with the notion of the `increment' operation $++$ and the number 0.
+It turns out that there are a number of surprising axioms needed to avoid problems like wraparounds (for example, preventing $4++ = 0$), ceilings ($4++ = 4$), etc.
+
+As a side note, there was an interesting discussion on whether numbers should be thought of as abstract concepts or as connected with a real external concept.
+For example, complex numbers often feel very pointless since they don't seem to have any tangible connection to numbers we use on a daily basis.
+It seems like every `discovery' of new types of numbers (negative numbers, irrational numbers, complex numbers) resulted in a similar sort of problem:
+originally, a number system was tied to some real external concept (like the number marbles someone could hold in their pocket), and if a new number system was discovered (irrational number of marbles?), this resulted in a lot of unnecessary confusion.
+It's therefore easier to think of numbers as abstract concepts that don't need a concrete model to understand:
+if you use a number system to model something in the real world, then you can attach the abstract number system to a real concept, but otherwise it is easier to remain abstract.
 
 \end{document}
