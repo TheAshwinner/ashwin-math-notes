@@ -5,6 +5,7 @@
 \usepackage{float}
 \usepackage{todonotes}
 
+\newcommand{\increment}{\text{++}}
 
 \title{Analysis Solutions}
 \author{Ashwin Sreevatsa}
@@ -13,13 +14,43 @@
 \begin{document}
 
 \maketitle
-\setcounter{section}{-1}
 
 \section*{Quick Remarks}
 This will be a solution page for problems in Terence Tao's Analysis 1 (Fourth edition).
+The problems I'm adding here are those that I worked on and solved myself.
+I don't expect to add all the problems in the textbook, but rather those that I find the most interesting.
+I will try and do a few problems from each section though, just to make sure I'm actually understanding the concepts properly.
 
-\section{Preface}
+\section{Introduction}
 
+\section{Starting at the Beginning: The Natural Numbers}
+
+\textbf{Proposition 2.1.6:} 4 is not equal to 0 
+\todo{Add column proofs.}
+
+\begin{solution}
+    \[
+        \begin{aligned} 
+            &4 = 3\increment \text{ (definition 2.1.3)} \\
+            &3\increment \text{ is a natural number (axiom 2.1, axiom 2.2).} \\
+            &3\increment \neq 0 \text{ (axiom 2.3)}
+        \end{aligned}
+    \]
+\end{solution}
+
+\textbf{Proposition 2.1.8:} 6 is not equal to 2
+\begin{solution}
+    \[
+        \begin{aligned}
+            &6=2\\
+            \implies &5 \increment = 1 \increment \text{ (axiom 2.2, def 2.1.3)}\\
+            \implies &5 = 1 \text{ (axiom 2.4)}\\
+            \implies &4 \increment = 0 \increment \text{ (axiom 2.2, def 2.1.3)}\\
+            \implies &4 = 0 \text{ (axiom 2.4)}\\
+        \end{aligned}
+    \]
+    We know that this is false from prop 2.1, so $6 \neq 2$.
+\end{solution}
 
 
 \section{Resources}
