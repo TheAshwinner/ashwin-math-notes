@@ -1,0 +1,71 @@
+\documentclass[answers,12pt]{exam}
+\usepackage[utf8]{inputenc, xcolor}
+\usepackage{hyperref}
+\usepackage{amsmath,amsthm,amssymb,empheq,amsfonts,amssymb}
+\usepackage{float}
+\usepackage{enumitem}
+\usepackage[]{mdframed}
+\usepackage{todonotes}
+\usepackage[normalem]{ulem}
+
+
+\title{Assorted Deep Learning Theory Notes}
+\author{Ashwin Sreevatsa}
+\date{April 2023}
+
+\begin{document}
+
+\maketitle
+\setcounter{section}{-1}
+
+\section*{Quick Remarks}
+This doc contains some assorted notes on deep learning theory related topics.
+Eventually I might merge this with the `neural\_tangent\_kernel.tex' file that I have.
+
+\section{Preface}
+
+\section{Gaussian processes}
+Gaussian processes are a tool to model data by both making predictions and providing distributions over those predictions.
+These notes will likely only cover the application of Gaussian processes to regression problems, but apparently there are ways to apply it to other problems (e.g.\ classification).
+
+Here is an example of a what the result of a Gaussian process might look like:
+
+\missingfigure[figwidth=10cm]{Add image of Gaussian process}
+
+The following is a potential use case for using Gaussan processes in a regression problem:
+consider you are a research lab attempting to design a new form of cement to better withstand stress.
+You want to test out how the cement performs given different proportions of some secret mixture A added to the cement.
+However the process of testing out each new cement mixture is expensive so you only want to test out with mixtures that are likely to perform well.
+You can use Gaussian processes both to predict which mixtures are successful as well as model your own uncertainty to only test the mixtures that you are most uncertain about.
+
+\missingfigure[figwidth=10cm]{Add image of how to use Gaussian processes for }
+
+\subsection{Diving in}
+Some quick background notes:
+Gaussian distributions are preserved over normalization, marginalization, conditioning, multiplication.\todo{prove}
+Bayes' theorem says that the conditional probability of event $Y$ given event $X$ is $P(Y|X)=\frac{P(X|Y)P(Y)}{P(X)}$.
+
+The goal of Gaussian processes is to get an expression for $P(y|x,D)$, or the probability of some output test data $y$ given some input test data $x$ and training data pairs $D = \{(x_1, y_1), \dots , (x_n,y_n)\}$.
+Note that there is no discussion of how the data is being modeled in any way: we only care about the training data and the input test data.
+
+Starting out though, we will assume a linear model for simplicity. \todo{Explain}
+This will eventually be rectified by using kernels.
+We have the following:
+\[
+    \begin{aligned}
+        \textcolor{purple}{P(y|x,D)} = \textcolor{teal}{\int} \textcolor{red}{p(y|x,w)}\textcolor{blue}{p(w|D)}\textcolor{teal}{dw}
+    \end{aligned}
+\]
+Note $w$ represents the weights of a linear model. \todo{How does $dw$ work}
+For example, we might have a linear regression problem like the following: $y = w^{\top}x + \epsilon$ for some $x \in \mathbf{R}^n$, where $\epsilon$ represents some noise.
+Notice what this integral represents: 
+to find the \textcolor{purple}{probability that the output data is $y$ given input data $x$ and data $D$}, \textcolor{teal}{for every possible linear model, take a sum} of the products of the \textcolor{red}{probability that we would see output $y$ given that model $w$ and input test data $x$} and \textcolor{blue}{the probability that this is the model $w$ given the training data $D$}.
+\todo{finish}
+
+
+\subsection{Resources} 
+\href{https://www.cs.cornell.edu/courses/cs4780/2018fa/lectures/lecturenote15.html}{(Cornell Machine Learning Lecture 26: Gaussian Processes)}
+
+\section{Resources}
+
+\end{document}
