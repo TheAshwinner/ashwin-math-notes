@@ -16,13 +16,36 @@
 \begin{document}
 
 \maketitle
-\setcounter{section}{-1}
 
 \section*{Quick Remarks}
 This doc contains some assorted notes on deep learning theory related topics.
 Eventually I might merge this with the `neural\_tangent\_kernel.tex' file that I have.
 
-\section{Preface}
+\section{Linear algebra}
+\subsection{Norms}
+Given some linear operation $A: \mathbf{R}^m \to \mathbf{R}^n$, a question you might ask is whether there is any way to formalize a notion of `size' of an operation.
+It seems like there are ways to formalize `size' for vectors (consider the different types of vector norms), so it's natural to ask if there is anything analogous for operators.
+
+This is where norms on linear operations come in.
+I'll introduce two types of norms (Frobenius norms and operator norms) and show some relationships between the two.
+
+I'll start with the Frobenius norm.
+It might be easiest to describe it by directly providing the formula and calculating it:
+for some linear operation $A: \mathbf{R}^m \to \mathbf{R}^n$ with entry $A_{ij}$ corresponding to the $i$th row and $j$th column, the Frobenius norm is the following:
+\[
+    ||A|| = \sqrt{\sum_{i=1}^{m}\sum_{j=1}^{n} |A_{ij}|^2 }    
+\]
+So for example, we have the following:
+\[
+    \begin{Vmatrix}\begin{bmatrix} 4 & -2 \\ 3 & 1 \\ \end{bmatrix} \end{Vmatrix}_{Frob}
+    = \sqrt{|4|^2 + |-2|^2 + |3|^2 + |1|^2}
+    = \sqrt{30}
+\]
+This does seem to capture some notion of `size': 
+in general, the more we might expect a linear operation to affect a vector that it operates on (as in, the farther $A \vec{v}$ is from $\vec{v}$for some $\vec{v} \in \mathbf{R}^m$), the larger the absolute value of the entries of the matrix, and therefore the larger the Frobenius norm.
+
+However, this norm has some problems: namely, it doesn't say much about the linear operation itself.
+For example, we can rearrange the values of any matrix and get the same norm, despite the resulting linear operation having very different effects on the vector.
 
 \section{Gaussian processes}
 Gaussian processes are a tool to model data by both making predictions and providing distributions over those predictions.
