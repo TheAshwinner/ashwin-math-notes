@@ -42,10 +42,39 @@ So for example, we have the following:
     = \sqrt{30}
 \]
 This does seem to capture some notion of `size': 
-in general, the more we might expect a linear operation to affect a vector that it operates on (as in, the farther $A \vec{v}$ is from $\vec{v}$for some $\vec{v} \in \mathbf{R}^m$), the larger the absolute value of the entries of the matrix, and therefore the larger the Frobenius norm.
+in general, the more we might expect a linear operation to affect a vector that it operates on (as in, the farther $A \vec{v}$ is from $\vec{v}$ for some $\vec{v} \in \mathbf{R}^m$), the larger the absolute value of the entries of the matrix, and therefore the larger the Frobenius norm.
 
 However, this norm has some problems: namely, it doesn't say much about the linear operation itself.
 For example, we can rearrange the values of any matrix and get the same norm, despite the resulting linear operation having very different effects on the vector.
+
+\todo{Add frobenius norm, operator norms}
+
+\section{Kernels}
+The motivation for using kernels in machine learning is to continue to use linear modeling techniques (linear regression, maximum margin classifiers, etc) on problems that don't appear to be linear.
+The reason why we would want this at all is that often these linear modeling techniques are easy to compute, simple, and often have closed-form solutions.
+
+The basic setup for kernels is the following:
+for simplicity, let's say we have some regression problem where we have some set of data points $D= \{(x_1,y_1),\dots, (x_k,y_k)\}$  with $x_i \in \mathbf{R}^m$ as the input and $y_i \in \mathbf{R}$ as the output.
+We want to find some function $f: \mathbf{R}^m \to \mathbf{R}$ to minimize the following loss function: $\frac{1}{2}\sum_{i=1}^{k}{(f(x_i)-y_i)}^2$.
+Ideally, we might want to use some linear function to model $f$ such as $f(x) = w^{\top}x$.
+However, if the data itself isn't linear, then trying to fit a linear function onto it will result in a poor performance.
+
+The key idea here is to introduce a mapping function $\phi(x_i): \mathbf{R}^m \to \mathbf{R}^p$, where $p>m$ in the hope that in some higher dimension this will become a linear problem. \todo{Make this more concrete.}
+
+The goal is to learn a new $f: \mathbf{R}^p \to \mathbf{R}$ that would instead minimize
+\[
+    \frac{1}{2}\sum_{i=1}^{k}{(f(\phi(x_i))-y_i)}^2
+\]
+
+By itself, this is an interesting idea, but one of the problems is that it might be much more computationally inefficient to compute this in $\mathbf{R}^p$ instead of $\mathbf{R}^m$. 
+Indeed, it turns out that there are useful mapping functions that technically map a data point into an infinite dimensional space: such $\phi(x_i)$ would be difficult to do much with by itself.
+
+This is where the kernel trick comes in:
+instead of actually computing $\phi(x_i)$ itself, there are often ways to reformulate a problem so that the only computation being done is something of the form $\phi(x_i)^{\top}\phi(x_i)$, which often has a closed form solution. \todo{give an example}.
+
+\subsection{Kernelized regularized sum-of-squares error}
+(Borrowed from Bishop: Pattern Recognition and Machine Learning 2006).
+
 
 \section{Gaussian processes}
 Gaussian processes are a tool to model data by both making predictions and providing distributions over those predictions.
