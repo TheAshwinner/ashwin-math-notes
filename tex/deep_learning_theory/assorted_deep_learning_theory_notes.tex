@@ -49,6 +49,34 @@ For example, we can rearrange the values of any matrix and get the same norm, de
 
 \todo{Add frobenius norm, operator norms}
 
+\subsection{Matrix decomposition}
+
+\subsubsection{Eigenvalue decomposition}
+We have some square matrix $A \in \mathbf{R}^{n \times n}$.
+The eigenvalue decomposition of a matrix factors out $A = U \Lambda U^{-1}$, where $\Lambda$ is a diagonal matrix where the $i$th entry corresponds to the $i$th eigenvalue of the $i$th eigenvector of $A$, and $U$ has each $i$th column being the $i$th unitary eigenvector.
+(Note that unitary vector means the vector that has length 1.)
+
+To put this in another way, let's say we know the unitary eigenvectors and eigenvalues of matrix $A$: $A \vec{u}_1 = \lambda_1 \vec{u}_1, \dots, A \vec{u}_n = \lambda_1 \vec{u}_n$.
+Then we can say that 
+\[
+    AU = A [\vec{u}_1, \dots, \vec{u}_n] = [\vec{u}_1, \dots, \vec{u}_n]
+    \begin{bmatrix}
+        \lambda_1 & 0 & \cdots & 0 \\
+        0 & \lambda_2 & \cdots & 0 \\
+        \vdots & \vdots & \ddots & \vdots \\
+        0 & 0 & \cdots & \lambda_n \\
+    \end{bmatrix}
+    = U \Lambda
+\]
+We then have that $A = U \Lambda U^{-1}$.
+Note that eigenvalue decomposition only works when $A$ is a diagonlizable matrix.
+
+\subsubsection{Singular Value Decomposition}
+\todo{finish}
+
+\subsubsection{Moore-Penrose Inverse}
+\todo{finish}
+
 \section{Kernels}
 The motivation for using kernels in machine learning is to continue to use linear modeling techniques (linear regression, maximum margin classifiers, etc) on problems that don't appear to be linear.
 The reason why we would want this at all is that often these linear modeling techniques are easy to compute, simple, and often have closed-form solutions.
