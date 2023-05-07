@@ -85,6 +85,103 @@ Note for posterity: originally I was attempting to prove the second part by show
 This is a false statement in general (just take $c = d$), yet it didn't occur to me to question it until I got repeatedly stuck.
 \end{solution}
 
+\textbf{Lemma 4.1.3} (Laws of algebra for addition)
+
+\begin{solution}
+\begin{proof}
+    Note that for most of these, we take $x = a \fakeminus b$, where $x$ is an integer and $a,b$ are natural numbers.
+    
+    Reflexivity:
+    \begin{align*}
+        x+y &= (a \fakeminus b) + (c \fakeminus d) \\
+        &= (a+c) \fakeminus (b+d) \\
+        &= (c+a) \fakeminus (d+b) \\
+        &= (c \fakeminus d) + (a \fakeminus b) \\
+        &= y+x
+    \end{align*}
+
+    Associativity
+    \begin{align*}
+        (x+y)+z &= ((a \fakeminus b) + (c \fakeminus d)) + (e \fakeminus f) \\
+        &= ((a+c) \fakeminus (b+d)) + (e \fakeminus f) \\
+        &= ((a+c)+e) \fakeminus ((b+d)+f) \\
+        &= (a+(c+e)) \fakeminus (b+(d+f)) \\
+        &= (a \fakeminus b) + ((c+e) \fakeminus (d+f)) \\
+        &= (a \fakeminus b) + ((c \fakeminus d) + (e \fakeminus f)) \\
+        &= x + (y+z)
+    \end{align*}
+
+    Additive identity
+    \begin{align*}
+        x+0 &= (a \fakeminus b) + 0 \\
+        &= (a \fakeminus b) + (0 \fakeminus 0) \\
+        &= (a+0) \fakeminus (b+0) \\
+        &= a \fakeminus b \\
+        &= x
+    \end{align*}
+    \begin{align*}
+        x+0 &= (a \fakeminus b) + 0 \\
+        &= (a \fakeminus b) + (0 \fakeminus 0) \\
+        &= (a+0) \fakeminus (b+0) \\
+        &= (0+a) \fakeminus (0+b) \\
+        &= 0 + x
+    \end{align*}
+
+    Additive inverse
+    \begin{align*}
+        x + (-x) &= (a \fakeminus b) + (- (a \fakeminus b)) \\
+        &= (a \fakeminus b) + (b \fakeminus a) \\
+        &= (a+b) \fakeminus (b+a) \\
+        &= (a+b) \fakeminus (a+b) \\ 
+        &= 0 \\
+        (-x)+x &= x + (-x) && \text{commutativity of integers}
+    \end{align*}
+
+    Multiplicative commutativity
+    \begin{align*}
+        xy &= (a \fakeminus b)(c \fakeminus d) \\
+        &= (ac + bd) \fakeminus (ad + bc) \\
+        &= (ca + db) \fakeminus (da + cb) \\ 
+        &= (c \fakeminus d)(a \fakeminus b) \\
+        &= yx
+    \end{align*}
+
+    Multiplicative associativity
+    \begin{align*}
+        (xy)z &= ((a \fakeminus b)(c \fakeminus d))(e \fakeminus f) \\
+        &= ((ac + bd) \fakeminus (ad + bc))(e \fakeminus f) \\
+        &= ((ac + bd)e + (ad + bc)f) \fakeminus ((ad + bc)e + (ac + bd)f) \\ 
+        &= (ace + bde + bcf + adf) \fakeminus (bce + ade + acf + bdf) \\
+        &= (a \fakeminus b)((ce + df) \fakeminus (cf + de)) \\
+        &= (a \fakeminus b)((c \fakeminus d)(e \fakeminus f)) \\
+        &= x(yz)
+    \end{align*}
+
+    Multiplicative identity
+    \begin{align*}
+        x \cdot 1 &= (a \fakeminus b) \cdot 1 \\
+        &= (a \fakeminus b)(1 \fakeminus 0) \\
+        &= (a \cdot 1 + b \cdot 0) \fakeminus (a \cdot 0 + b \cdot 1) \\
+        &= (a \fakeminus b) \\
+        &= x \\
+        x \cdot 1 &= 1 \cdot x
+    \end{align*}
+    
+    Distributive property
+    \begin{align*}
+        x(y+z) &= (a \fakeminus b)((c \fakeminus d) + (e \fakeminus f)) \\
+        &= (a \fakeminus b) ((c+e) \fakeminus (d+f)) \\\
+        &= (a(c+e) + b(d+f)) \fakeminus (b(c+e) + a(d+f)) \\
+        &= (ac + bd + ae + bf) \fakeminus (bc + be + ad + af) \\
+        &= (ac + bd + ae + bf) \fakeminus (be + af + ad + bc) \\
+        &= ((ac +bd) \fakeminus (ad + bc)) + ((ae + bf) \fakeminus (be + af)) \\
+        &= (a \fakeminus b)(c \fakeminus d) + (a \fakeminus b)(e \fakeminus f) \\
+        &= xy + xz
+    \end{align*}
+\end{proof}
+\end{solution}
+
+
 
 
 \section{Resources}
