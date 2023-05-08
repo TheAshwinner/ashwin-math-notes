@@ -53,6 +53,74 @@ I will try and do a few problems from each section though, just to make sure I'm
     We know that this is false from prop 2.1, so $6 \neq 2$.
 \end{solution}
 
+\textbf{Proposition 2.1.16:}  
+
+\begin{solution}
+
+\end{solution}
+
+\textbf{Lemma 2.2.2:}  $n+0=n$
+
+\begin{solution}
+We use induction.
+Let property $P(n)$ be that $n+0=n$.
+$P(0): 0+0=0$, which holds by the definition of addition (1).
+We want to show that $P(n) \implies P(n \increment)$.
+If $n+0=n$ by the inductive hypothesis, then 
+\begin{align*}
+    (n \increment) + 0 &= (n+0) \increment && \text{def of addition 2}\\
+    &= n \increment && \text{inductive hypothesis}
+\end{align*}
+So $P(n)$ holds for all natural numbers $n$.
+\end{solution}
+
+\textbf{Lemma 2.2.3:}  $n+ (m \increment) = (n+m) \increment$
+
+\begin{solution}
+Let $P(n): n+ (m \increment) = (n+m) \increment$.
+Base case: 
+\begin{align*}
+    P(0): 0+ (m \increment) &= m \increment && (1) \\
+    &= (0 + m) \increment && (1)
+\end{align*}
+Inductive step: $P(n) \implies P(n \increment)$
+\begin{align*}
+    (n \increment) + (m \increment) &= (n+ (m \increment)) \increment && (2) \\
+    &= ((n+m) \increment) \increment && \text{inductive step} \\
+    &= ((n \increment) + m) \increment && (2) \\
+\end{align*}
+By axiom 2.5, $P(n)$ holds for all natural numbers.
+\end{solution}
+
+\textbf{Corollary 2.2.3.1} (Technically not an actual problem, just a note): $n \increment = n+1$
+
+\begin{solution}
+    \begin{align*}
+        n \increment &= (n+0) \increment && \text{Lemma 2.2.2} \\
+        &= n + (0 \increment) && \text{Lemma 2.2.3}\\
+        &= n+1 && \text{Definition of 1}
+    \end{align*}
+\end{solution}
+
+\textbf{Prop 2.2.4} Commutativity of natural numbers in addition: $P(n): n+m = m+n$
+
+\begin{solution}
+    We use induction to show property $P(n): n + m = m + n$
+    
+    Base case $P(0)$
+    \begin{align*}
+        0+m &= m && (1) \\
+        &= m+0 && \text{(lemma 2.2.2)}
+    \end{align*}
+    Inductive step $P(n) \implies P(n\increment)$:
+    \begin{align*}
+        (n \increment) + m &= (n+m) \increment && (2) \\
+        &= (m+n) \increment && \text{(inductive hyp)} \\
+        &= m+ (n \increment) && \text{(lemma 2.2.3)}
+    \end{align*}
+    By axiom 2.5, $P(n)$ holds for all natural numbers.
+\end{solution}
+
 \section{Set Theory}
 
 \section{Integers and Rationals}
@@ -90,7 +158,7 @@ This is a false statement in general (just take $c = d$), yet it didn't occur to
 \begin{solution}
 \begin{proof}
     Note that for most of these, we take $x = a \fakeminus b$, where $x$ is an integer and $a,b$ are natural numbers.
-    
+
     Reflexivity:
     \begin{align*}
         x+y &= (a \fakeminus b) + (c \fakeminus d) \\
