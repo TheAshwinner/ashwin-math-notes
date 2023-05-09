@@ -106,7 +106,7 @@ By axiom 2.5, $P(n)$ holds for all natural numbers.
 
 \begin{solution}
     We use induction to show property $P(n): n + m = m + n$
-    
+
     Base case $P(0)$
     \begin{align*}
         0+m &= m && (1) \\
@@ -119,6 +119,28 @@ By axiom 2.5, $P(n)$ holds for all natural numbers.
         &= m+ (n \increment) && \text{(lemma 2.2.3)}
     \end{align*}
     By axiom 2.5, $P(n)$ holds for all natural numbers.
+\end{solution}
+
+\textbf{Prop 2.2.5} Commutativity of addition over natural numbers
+
+\begin{solution}
+    Let $P(c):= (a+b)+c = a+(b+c)$, with $a,b,c$ as natual numbers.
+    We use induction to prove this.
+    
+    Base case: $P(0)$:
+    \begin{align*}
+        (a+b)+0 &= a+b && \text{lemma 2.2.2}\\
+        &= a+(b+0) && \text{lemma 2.2.2}
+    \end{align*}
+
+    Inductive hypothesis: $P(n) \implies P(n \increment)$
+    \begin{align*}
+        (a+b)+ c \increment &= ((a+b)+c) \increment && \text{lemma 2.2.3} \\
+        &=(a+(b+c))\increment && \text{inductive hypothesis} \\
+        &= a + (b+c) \increment && \text{lemma 2.2.3} \\
+        &= a+(b+c \increment) && \text{lemma 2.2.3}
+    \end{align*}
+    By axiom 2.5 (or whatever), this holds for all natural numbers and we are done.
 \end{solution}
 
 \section{Set Theory}
