@@ -146,6 +146,7 @@ By axiom 2.5, $P(n)$ holds for all natural numbers.
 \section{Set Theory}
 
 \section{Integers and Rationals}
+\subsection{4.1 Integers}
 \textbf{Lemma 4.1.3} Addition and multiplication are well-defined.
 Let $a,b,a',b',c,d$ be natural numbers.
 If $(a \fakeminus b)=(a' \fakeminus b')$, then $(a \fakeminus b)+(c \fakeminus d)=(a' \fakeminus b')+(c \fakeminus d)$ and $(a \fakeminus b)\times(c \fakeminus d)=(a' \fakeminus b')\times(c \fakeminus d)$.
@@ -271,6 +272,27 @@ This is a false statement in general (just take $c = d$), yet it didn't occur to
 \end{proof}
 \end{solution}
 
+\subsection{Rationals}
+
+\textbf{Lemma 4.2.3 (Exercise 4.2.2)} 
+We want to show that formal division is well-defined.
+As in $a//b = a'//b' \implies a//b + c//d = a'//b' + c//d, a//b-c//d = a'//b'-c//d, a//b \cdot c//d = a'//b' \cdot c//d$
+
+\begin{solution}
+\begin{proof}
+    1. $a//b=a'//b' \implies (a//b)+(c//d) = (a'//b')+(c//d)$
+    \begin{align*}
+        a//b = a'//b' &\implies ab' = a'b && \text{4.2.1} \\
+        &\implies ab'd^2 = a'bd^2 \\
+        &\implies ab'd^2 + bcb'd = a'bd^2 + bcb'd \\
+        &\implies adb'd + bcb'd = a'dbd + b'cbd \\
+        &\implies (ad+bc)(b'd) = (a'd + b'c)(bd) \\
+        &\implies (ad + bc) // bd = (a'd + b'c)//b'd && \text{def 4.2.1}\\
+        &\implies (a//b) + (c//d) = (a'//b')+(c//d) && \text{def 4.2.1}
+    \end{align*}
+\end{proof}
+\end{solution}
+\todo{Add more explanations, verify}
 
 
 
