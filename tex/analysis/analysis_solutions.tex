@@ -143,6 +143,33 @@ By axiom 2.5, $P(n)$ holds for all natural numbers.
     By axiom 2.5 (or whatever), this holds for all natural numbers and we are done.
 \end{solution}
 
+\textbf{Prop 2.2.6} Additive cancellation law
+
+\begin{solution}
+    Let's say $P(a): a+b = a+c \implies b=c$.
+    We want to show that this property holds via induction.
+
+    Base case $P(0)$: we have $0+b=0+c$.
+    Then:
+    \begin{align*}
+        b &= 0+b && (1) \\
+        &= 0+c && \text{assumption} \\ 
+        &= c && (1)
+    \end{align*}
+
+    Inductive step $P(n) \implies P(n \increment)$.
+
+    We have that $a+b=a+c \implies b=c$ and $(a \increment) +b  = (a \increment) + c$.
+    \begin{align*}
+        (a + b) \increment &= (a \increment) + b && (2) \\
+        &= (a \increment) + c && \text{assumption} \\ 
+        &= (a+c) \increment && (2)
+    \end{align*}
+    We then have $a+b=a+c$ from axiom 2.4 $(a \increment = b \increment \implies a=b)$.
+
+    By axiom 2.5, this holds for all natural numbers.
+\end{solution}
+
 \section{Set Theory}
 
 \section{Integers and Rationals}
