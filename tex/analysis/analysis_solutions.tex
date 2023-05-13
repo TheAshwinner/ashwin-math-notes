@@ -338,6 +338,28 @@ As in $a//b = a'//b' \implies a//b + c//d = a'//b' + c//d, a//b-c//d = a'//b'-c/
 \end{solution}
 \todo{Add more explanations, verify}
 
+\section{The Real Numbers}
+
+\textbf{Lemma 5.3.14} 
+Let $x$ be a non-zero real number. Then $x= LIM_{n \to \infty} a_n$ for a Cauchy sequence ${(a_n)}_{n=1}^{\infty}$ which is bounded away from zero.
+
+\begin{solution}
+    My solution sketch: we know that $x$ is real so it is the limit of some Cauchy sequence ${(b_n)}_{n=1}^{\infty}$.
+    If we can show that for some $N$, eventually $b_n$ is bounded away from $0$ for all $n > N$, we are done, because we can just construct a Cauchy sequence beginning at $N$.
+    My approach to doing this was to show that for any non-zero real $x = LIM_{n \to \infty}a_n$, we would be able to find a rational $y$ such that for some $N$, $n>N$ implies $|a_n|>y$.
+    With this, we could find that $N$ and construct the new Cauchy sequence starting at ${(a_n)}_{n=N}^{\infty}$.
+    It would be straightforward to also show that this real number implied by the Cauchy sequence is equivalent to $x$.
+
+    This solution is a bit tortuous and requires proving a number of smaller lemmas (showing that for some non-zero real the Cauchy sequence will eventually have a non-zero lower bound, subsequences of Cauchy sequences are still Cauchy, etc).
+    Tao's solution appear to be much more direct:
+    we know that there is some Cauchy sequence for $x$ that is not necessarily bounded away from zero.
+    Yet since $x \neq 0$, ${(b_n)}_{n=1}^{\infty}$ is not equivalent to ${(0)}_{n=1}^{\infty}$.
+    So it is not eventually $\epsilon$ close for some $\epsilon$.
+    Using the triangle inequality, he was then able to show that after a certain point, $|b_n|> \frac{\epsilon}{2}$ for all $n>N$.
+
+    Notably, what he did differently was use the fact that $x \neq 0$ to find some $\epsilon$ such that $x, 0$ were never $\epsilon$ close, which allowed him to avoid some of the lemmas that I had to prove.
+\end{solution}
+
 
 
 \section{Resources}
