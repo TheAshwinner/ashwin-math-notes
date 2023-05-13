@@ -7,6 +7,7 @@
 
 \newcommand{\increment}{\text{++}}
 \newcommand{\fakeminus}{\text{ --- }}
+\newcommand{\suchthat}{\text{ s.t. }}
 
 \title{Analysis Solutions}
 \author{Ashwin Sreevatsa}
@@ -358,6 +359,26 @@ Let $x$ be a non-zero real number. Then $x= LIM_{n \to \infty} a_n$ for a Cauchy
     Using the triangle inequality, he was then able to show that after a certain point, $|b_n|> \frac{\epsilon}{2}$ for all $n>N$.
 
     Notably, what he did differently was use the fact that $x \neq 0$ to find some $\epsilon$ such that $x, 0$ were never $\epsilon$ close, which allowed him to avoid some of the lemmas that I had to prove.
+\end{solution}
+
+\textbf{Lemma 5.3.14} 
+If ${(a_n)}_{n=1}^{\infty}$ is a Cauchy sequence that is bounded away from 0, then ${(a_n^{-1})_{n=1}^{\infty}}$ is also Cauchy and bounded away from 0.
+
+\begin{solution}
+\begin{proof}
+    From lemma 5.3.14 that since $a_n$ is bounded away from 0, we know that there is some $M>0$ such that $|a_n| > M$ for all $n$.
+    If ${(a_n)}_{n=1}^{\infty}$ is Cauchy, then we have that 
+    \[
+        \forall \epsilon >0, \exists N \suchthat \forall j,k > N, |a_j - a_k| < \epsilon
+    \]
+    Then, 
+    \begin{align*}
+        |a_j^{-1} - a_k^{-1}| &= \left | \frac{a_k-a_j}{a_j a_k}\right | \\
+        &= \frac{\left | a_j - a_k \right |}{\left | a_j \right | \left | a_k \right |} \\
+        &< \frac{\epsilon}{M^2}
+    \end{align*}
+    So we can just take that for all $\epsilon>0$, we just need to find a $N$ such that $|a_j-a_k| < \epsilon M^2$, which we can find since $(a_n)$ is Cauchy.
+\end{proof}
 \end{solution}
 
 
