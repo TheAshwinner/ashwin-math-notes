@@ -71,11 +71,75 @@ Then we can say that
 We then have that $A = U \Lambda U^{-1}$.
 Note that eigenvalue decomposition only works when $A$ is a diagonlizable matrix.
 
+\todo{How to compute?}
+
 \subsubsection{Singular Value Decomposition}
-\todo{finish}
+The goal SVD is to find some set of orthonormal vectors $\vec{v}_1, \dots, \vec{v}_n$ such that $A \vec{v}_1, \dots, A \vec{v}_n$ are orthogonal.
+This is useful because eventually, we will be able to decompose $A = U \Sigma V^{\top}$ where $U$ and $V$ are both orthogonal matrices and $\Sigma$ is a diagonal matrix (though not necessarily square).
+This greatly simplifies many types of computations, such as those involving $A^{\top}A, AA^{\top}$.
+(For example, $A^{\top}A = U \Sigma V^{\top} V \Sigma^{\top} U^{\top} = U \Sigma \Sigma^{\top} U^{\top}$.
+Also note that ${(A^{\top}A)}^k = {(U \Sigma \Sigma^{\top} U^{\top})}^k = U {(\Sigma \Sigma^{\top})}^k U^{\top}$.)
+
+One way to look at SVD is that to perform some linear operation $A$ on some vector $\vec{w}$, we instead perform 3 other operations:
+one rotation/reflection/rotoreflection, one operation scaling the vector, and then one more rotation/reflection/rotoreflection.
+\missingfigure[figwidth=10cm]{Add image in img folder}
+
+The SVD for a matrix always exists.
+(There is a theorem for this \todo{Add thm})
+
+Another property: if $A$ is square, real, and symmetric, then the eigenvalues and singular values are the same. (\todo{ver-ify})
+
+\todo{how to com-pute}
 
 \subsubsection{Moore-Penrose Inverse}
 \todo{finish}
+List of questions I'll need to resolve to be more comfortable with the Moore-Penrose Inverse:
+\begin{itemize}
+    \item When should you use MPI, when shouldn't you use it?
+    Examples?
+    \item How do we compute it?
+    \item I've seen multiple formalizations (for example, the conditions, the defintion based off SVD, the limit definition).
+    How do we show that all of these formalizations are equivalent?
+\end{itemize}
+
+There are 4 properties the Moore-Penrose Inverse $A^{\dagger}$ of a matrix $A$ needs to satisfy:
+\begin{align*}
+    1. A^{\dagger} A A^{\dagger} &= A^{\dagger} \\
+    2. A A^{\dagger} A &= A \\
+    3. {(A A^{\dagger})}^{\top} &= A A^{\dagger} \\
+    4. {(A^{\dagger} A)}^{\top} &= A^{\dagger} A
+\end{align*}
+
+\textbf{Existence:} 
+The pseudoinverse must exist for any matrix because it's constructed from the singular value decomposition, which is itself guaranteed to exist.
+
+\textbf{Uniqueness:} 
+The pseudoinverse of a matrix is unique.
+Let's say that $A_1^{\dagger}, A_2^{\dagger}$ are both pseudo-inverses of $A$.
+Then, we have the following:
+\begin{solution}
+    Uniqueness of pseudoinverse:
+    \begin{align*}
+        A_1^{\dagger} &= A_1^{\dagger} A A_1^{\dagger} \\
+        &= A_1^{\dagger} (A A_2^{\dagger} A) A_1^{\dagger} \\
+        &= A_1^{\dagger} {(A A_2^{\dagger})}^{\top} {(A A_1^{\dagger})}^{\top} \\
+        &= A_1^{\dagger} {(A_2^{\dagger})}^{\top} A^{\top} {(A_1^{\dagger})}^{\top} A^{\top} \\
+        &= A_1^{\dagger} {(A_2^{\dagger})}^{\top} A^{\top} \\
+        &= A_1^{\dagger} {(A A_2^{\dagger})}^{\top} \\
+        &= A_1^{\dagger} A A_2^{\dagger} \\
+        &= {(A_1^{\dagger} A)}^{\top} A_2^{\dagger} \\
+        &= A^{\top} {(A_1^{\dagger})}^{\top} A_2^{\dagger} \\
+        &= {(A A_2^{\dagger} A)}^{\top} {(A_1^{\dagger})}^{\top} A_2^{\dagger} \\
+        &= A^{\top} {(A_2^{\dagger})}^{\top} A^{\top} {(A_1^{\dagger})}^{\top} A_2^{\dagger} \\
+        &= {(A_2^{\dagger} A)}^{\top} A^{\top} {(A_1^{\dagger})}^{\top} A_2^{\dagger} \\
+        &= A_2^{\dagger} A {(A_1^{\dagger} A)}^{\top} A_2^{\dagger} \\
+        &= A_2^{\dagger} A A_1^{\dagger} A A_2^{\dagger} \\
+        &= A_2^{\dagger} A A_2^{\dagger} \\
+        &= A_2^{\dagger}
+    \end{align*}
+\end{solution}
+
+\section{Linear Regression}
 
 \section{Kernels}
 The motivation for using kernels in machine learning is to continue to use linear modeling techniques (linear regression, maximum margin classifiers, etc) on problems that don't appear to be linear.
@@ -142,9 +206,12 @@ Notice what this integral represents:
 to find the \textcolor{purple}{probability that the output data is $y$ given input data $x$ and data $D$}, \textcolor{teal}{for every possible linear model, take a sum} of the products of the \textcolor{red}{probability that we would see output $y$ given that model $w$ and input test data $x$} and \textcolor{blue}{the probability that this is the model $w$ given the training data $D$}.
 \todo{finish}
 
+\subsection{Neural Network Gaussian Processes}
 
 \subsection{Resources} 
 \href{https://www.cs.cornell.edu/courses/cs4780/2018fa/lectures/lecturenote15.html}{(Cornell Machine Learning Lecture 26: Gaussian Processes)}
+
+\section{Neural Tangent Kernels}
 
 \section{Resources}
 
