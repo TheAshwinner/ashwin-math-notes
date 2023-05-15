@@ -7,7 +7,10 @@
 \usepackage[]{mdframed}
 \usepackage{todonotes}
 \usepackage[normalem]{ulem}
+\usepackage{graphicx}
+\usepackage[section]{placeins}
 
+\graphicspath{../../img/deep_learning_theory/}
 
 \title{Assorted Deep Learning Theory Notes}
 \author{Ashwin Sreevatsa}
@@ -69,7 +72,7 @@ Then we can say that
     = U \Lambda
 \]
 We then have that $A = U \Lambda U^{-1}$.
-Note that eigenvalue decomposition only works when $A$ is a diagonlizable matrix.
+Note that eigenvalue decomposition only works when $A$ is a diagonalizable matrix.
 
 \todo{How to compute?}
 
@@ -82,7 +85,13 @@ Also note that ${(A^{\top}A)}^k = {(U \Sigma \Sigma^{\top} U^{\top})}^k = U {(\S
 
 One way to look at SVD is that to perform some linear operation $A$ on some vector $\vec{w}$, we instead perform 3 other operations:
 one rotation/reflection/rotoreflection, one operation scaling the vector, and then one more rotation/reflection/rotoreflection.
-\missingfigure[figwidth=10cm]{Add image in img folder}
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.5]{../../img/deep_learning_theory/SingularValueDecompositionWikipedia.png}
+    \caption{Singular value decomposition of matrix $M$}
+\end{figure}
+
 
 The SVD for a matrix always exists.
 (There is a theorem for this \todo{Add thm})
@@ -90,6 +99,8 @@ The SVD for a matrix always exists.
 Another property: if $A$ is square, real, and symmetric, then the eigenvalues and singular values are the same. (\todo{ver-ify})
 
 \todo{how to com-pute}
+
+\FloatBarrier{}
 
 \subsubsection{Moore-Penrose Inverse}
 \todo{finish}
@@ -140,6 +151,25 @@ Then, we have the following:
 \end{solution}
 
 \section{Linear Regression}
+In the linear regression problem, we have some set of data points $x_i \in \mathbf{R}^d$ and observations $y \in \mathbf{R}$ and we are trying to fit the data using some linear model.
+To be explicit, we are trying to find some linear function $f(x) = w^{\top} x_i = \sum_{j=1}^d w_j x_{j,i}$.
+Of course, as described the problem is underdetermined:
+the main constraint we would like to satisfy is that we want to minimize some error function.
+
+A concrete example of this is the housing price prediction problem.
+Suppose there is some dataset of houses with triples of (\# of bedrooms, \# of bathrooms, square footage) along with the price of the house.
+We can use linear regression to learn the weights $w$ in order to predict a house given the number of bedrooms, bathrooms, and square footage.
+
+In general, the error function we try to minimize is the mean squared loss, or $\mathcal{L}(w) = \frac{1}{2} \sum_{i=1}^{n} {(y_i - f(x))}^2 = \frac{1}{2} \sum_{i=1}^{n} {(y_i - w^{\top}x_i)}^2$.
+Note the dimensions: $w^{\top}$ is a $1 \times d$ matrix, $x_i$ is a $d$-dimensional vector (or $d \times 1$ matrix), and $y_i$ a 1-dimensional vector.
+
+While there is an exact closed form solution for this problem, there is some interesting analysis to be found if you take a gradient descent approach. 
+\todo{pro-ve}
+Indeed, there is a theorem that says the following: 
+given a linear regression problem with the weights initialized at 0 ($w_0 = \vec{0}$), gradient descent minimizing the mean squared error will converge to $\lim_{n \to \infty} w_{n} = yX^{\dagger}$ where $X^{\dagger}$ is the Moore-Penrose inverse iff the learning rate $\eta$ satisfies $0 < \eta < \frac{2}{\sigma_1^2}$ where $\sigma_1$ is the top singular value of $X$.
+(Not the original source, but a good exposition here: \href{https://web.mit.edu/modernml/course/lectures/MLClassLecture2.pdf}{Modern ML course})
+
+% TODO: underparameterized, overparameterized, regimes
 
 \section{Kernels}
 The motivation for using kernels in machine learning is to continue to use linear modeling techniques (linear regression, maximum margin classifiers, etc) on problems that don't appear to be linear.
