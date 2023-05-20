@@ -81,10 +81,19 @@ This chapter covered the fundamentals of set theory, starting with the set theor
 The chapter ended with a discussion on cardinality of sets.
 
 \section{Integers and Rationals}
-The general theme of this chapter was defining some formal version of an operation (subtraction, division), use that formal version to construct some set of numbers (integers for the former, rationals for the latter), and then define the standard version of the operation while showing the formal and the standard versions were equivalent.
+The general theme of this chapter was defining new operations (subtraction, division) and new number systems (integers, rationals).
+Note however that there is a difficulty: to define the number system, one needs to define the respective operation to reach those numbers. 
+For example, there's no way to reach negative integers from natural numbers using only addition and multiplication: subtraction is needed. 
+But to define the true version of the subtraction operation, we need to have the integers (the natural numbers are not closed under subtraction).
+To break out of this chicken and egg problem, we need to define a formal version of this operation only on the natural numbers before then defining the integers and then finally defining the true version of this operation.
+At this point, we generally show that the formal operation and the true operation are equivalent.
 
 One way to think about this is that defining the formal version of these operations is setting up scaffolding: once the building has been constructed, the scaffolding can be discarded. This `scaffolding' is apparently needed to avoid circular arguments where more advanced results are used to prove more primitive statements.
 
 A common theme seems to be initial constructions of number systems getting consumed by future, more useful constructions (naturals superceded by integers superceded by rationals, which should be superceded by reals).
+
+Most of the work of this chapter went into the above along with then proving that the operations are consistent and maintain their expected properties.
+We also introduced absolute values and exponentiation.
+The final section demonstrated that even though any gap between rationals contains additional rationals, there exist numbers for which there are no rational numbers ($\sqrt{2}$), opening the door to defining the real numbers.
 
 \end{document}
