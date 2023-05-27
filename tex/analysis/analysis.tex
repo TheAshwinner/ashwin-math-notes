@@ -70,6 +70,8 @@ Following this, the chapter then defines addition and multiplication on the natu
 This chapter introduces natural numbers with the notion of the `increment' operation $++$ and the number 0.
 It turns out that there are a number of surprising axioms needed to avoid problems like wraparounds (for example, preventing $4++ = 0$), ceilings ($4++ = 4$), etc.
 
+One takeaway: when we are working with natural numbers and we are trying to prove some property, the first thing one should consider is a proof by induction.
+
 As a side note, there was an interesting discussion on whether numbers should be thought of as abstract concepts or as connected with a real external concept.
 For example, complex numbers often feel very pointless since they don't seem to have any tangible connection to numbers we use on a daily basis.
 It seems like every `discovery' of new types of numbers (negative numbers, irrational numbers, complex numbers) resulted in a similar sort of problem:
@@ -157,6 +159,10 @@ With this, we can define the supremum and infimum of sets as the least upper bou
 The final section then begins to define properties of real exponentiation:
 specifically, what does it mean to take $x^y$, if $x$ is real and $y$ is rational.
 Note that we have to wait until chapter 6 to define exponentiation when $y$ is real.
+
+Some tips when trying to write proofs involving $\epsilon$ and $\delta$ terms:
+If $|x|<\epsilon$ for all $\epsilon >0$, $|x| = 0$.
+If $x \leq y + \epsilon$ for all $\epsilon > 0$ then $x \leq y$ (which is often useful if we want to show that $x=y$ and it is easy to show that $y \leq x$ but not the reverse).
 
 \section{Limits of sequences}
 The goal of this chapter is to introduce and expand on limits for sequences.
