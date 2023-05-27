@@ -158,4 +158,27 @@ The final section then begins to define properties of real exponentiation:
 specifically, what does it mean to take $x^y$, if $x$ is real and $y$ is rational.
 Note that we have to wait until chapter 6 to define exponentiation when $y$ is real.
 
+\section{Limits of sequences}
+The goal of this chapter is to introduce and expand on limits for sequences.
+At a high level, this section introduces sequences of real numbers, describes suprema and infima on real sequences, introduces a number of useful definitions and formalizations for limits of sequences (the limit itself, limit inferior, limit superior, limiting points, subsequences), describes the limits of some commonly found sequences, and completes the formalization of real exponentiation.
+
+This section completes the job of the previous section: to replace the formal version of the limit operation with the actual limit operation.
+What this means is that previously, we defined the limits and Cauchy sequences of rational numbers, but we want to be able to define limits and Cauchy sequences of real numbers as well.
+The latter supercedes the former, so once this is complete, we don't need to make any distinction between Cauchy sequences on reals vs on rationals.
+Following this, the standard limit laws are proven for real numbers (theorem 6.1.19).
+
+The most important theorem in this chapter might be theorem 6.4.18: the completeness of reals.
+What this is essentially saying is that there are no gaps in the reals, as there are with rationals.
+For rationals, we can describe a Cauchy sequence that converges to no rational value (e.g.\ a sequence converging to $\sqrt{2}$).
+For reals, any Cauchy sequence will converge.
+This is a crucial distinction between the two number systems.
+
+The other major theorem that is included in section 6.6 is the Bolzano-Weierstrass theorem (theorem 6.6.8).
+This theorem basically says that for a bounded sequence, there is a subsequence that converges.
+This should make some intuitive sense: if a sequence is bounded, there is not enough `room' to spread out indefinitely, so at least some fraction of the total space must have arbitrarily many elements of the sequence.
+That is the subsequence that converges (of which there must be at least 1, though there may be more).
+This is a precursor to notions of compactness and the Heine-Borel theorem that I expect to appear later on.
+
+The final section 6.7 completes the definition of real exponentiation.
+
 \end{document}
