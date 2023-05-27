@@ -7,6 +7,7 @@
 \usepackage[]{mdframed}
 \usepackage{todonotes}
 \usepackage[normalem]{ulem}
+\newcommand{\suchthat}{\text{ s.t. }}
 
 
 \title{Analysis Notes}
@@ -95,5 +96,66 @@ A common theme seems to be initial constructions of number systems getting consu
 Most of the work of this chapter went into the above along with then proving that the operations are consistent and maintain their expected properties.
 We also introduced absolute values and exponentiation.
 The final section demonstrated that even though any gap between rationals contains additional rationals, there exist numbers for which there are no rational numbers ($\sqrt{2}$), opening the door to defining the real numbers.
+
+\section{The Real Numbers}
+It's in this chapter that the pace starts picking up.
+The goal of this chapter is to define real numbers and their construction.
+The motivation for why we want to do this is that many natural examples come up in geometry, trigonometry, etc where numbers may not necessarily be rational (for example $\sqrt{2}$, $\pi$, etc).
+To do this, we need to define the limit operation and the formal version of this operation.
+
+The core machinery for defining the real numbers is the Cauchy sequence.
+Intuitively, this is a sequence of numbers whose members `eventually' get arbitrarily close to one another.
+We initially start with a more restricted form of a Cauchy sequence only using rational numbers: eventually, we define Cauchy sequences using real numbers and show that the latter is a superset of the former.
+
+The formal definition is the following:
+If a sequence $(a_n)_{n=1}^{\infty}$ is a Cauchy sequence, then for all rational (or real) $\epsilon > 0$, there exists an integer $N \geq 0$ such that for all integers $j,k > N$, we have that $|a_j - a_k| < \epsilon$.
+Or more succinctly:
+\[
+    \forall \epsilon > 0, \exists N \in \mathbf{N} \suchthat \forall j,k >N \suchthat j,k \in \mathbf{N}, |a_j - a_k| < \epsilon
+\]
+This is not trivial to understand: it takes Tao 2 sections to really pin down all the necessary propositions and lemmas to properly define the Cauchy sequence.
+
+Some examples of Cauchy sequences:
+
+\begin{itemize}
+    \item \textbf{Example 0:}
+    $1, 1, 1, 1, \dots$
+    \item \textbf{Example 1:}
+    $0.9, 0.99, 0.999, \dots$
+    \item \textbf{Example 2:}
+    $0.1, -0.01, 0.001, -0.0001, \dots$
+    \item \textbf{Example 3:}
+    $4, 982, -54, 11005, -842, 0, 0, 0, \dots$
+    (followed by arbitrarly many zeroes)
+\end{itemize}
+Example 3 is a Cauchy sequence because we only care about the behavior `eventually'.
+
+Non examples of Cauchy sequences:
+\begin{itemize}
+    \item \textbf{Non-example 0:}
+    1, -1,  1, -1, 1, -1 \dots
+    \item \textbf{Non-example 1:}
+    1, 2, 3, 4, 5, \dots
+    \item \textbf{Non-example 2:}
+    1, 0, 1, 0, 1, 1, 1, 0, 1, 1, \dots
+    (where the sequence will have zeroes at steadily increasing intervals: for example $a_n = 0$ if $n$ is a power of 2, and otherwise $a_n=1$)
+\end{itemize}
+Example 2 is not Cauchy because no matter how long the sequence goes, we will eventually find a zero.
+
+We eventually define real numbers as the Cauchy sequences of rational numbers.
+As previously, much of sections 5.3 are spent showing that the properties of algebra previously defined are still consistent.
+One interesting note: it takes much more work to define division rigorously since we now have to say something about what it means for a Cauchy sequence of rational numbers to `not be zero' (since of course division by zero is undefined).
+The following section discusses properties about the ordering of real numbers.
+
+The next section introduces the notion of the least upper bound property, which is an advantage that real numbers have over rationals.
+For any subset of the real numbers, there is a least upper bound of those subsetes that is a real number. 
+(Note that this is not necessarily true for rationals:
+Consider some set of numbers $1, 1.4, 1.41, 1.414 \dots$ that approaches $\sqrt{2}$.
+The least upper bound is $\sqrt{2}$ but this is not rational, so the least upper bound on the rationals for this set does not exist.)
+With this, we can define the supremum and infimum of sets as the least upper bound and the greatest lower bound, respectively.
+
+The final section then begins to define properties of real exponentiation:
+specifically, what does it mean to take $x^y$, if $x$ is real and $y$ is rational.
+Note that we have to wait until chapter 6 to define exponentiation when $y$ is real.
 
 \end{document}
