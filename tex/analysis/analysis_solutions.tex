@@ -361,7 +361,7 @@ Let $x$ be a non-zero real number. Then $x= LIM_{n \to \infty} a_n$ for a Cauchy
     Notably, what he did differently was use the fact that $x \neq 0$ to find some $\epsilon$ such that $x, 0$ were never $\epsilon$ close, which allowed him to avoid some of the lemmas that I had to prove.
 \end{solution}
 
-\textbf{Lemma 5.3.14} 
+\textbf{Lemma 5.3.15} 
 If ${(a_n)}_{n=1}^{\infty}$ is a Cauchy sequence that is bounded away from 0, then ${(a_n^{-1})_{n=1}^{\infty}}$ is also Cauchy and bounded away from 0.
 
 \begin{solution}
@@ -381,7 +381,142 @@ If ${(a_n)}_{n=1}^{\infty}$ is a Cauchy sequence that is bounded away from 0, th
 \end{proof}
 \end{solution}
 
+\section{Limits of sequences}
 
+\section{Series}
+The goal of this section is to develop a coherent theory of the limit of sequences.
+We define a series as the following:
+\[
+    \begin{aligned}
+        \sum_{i=m}^{n+1} a_i &= \sum_{i=m}^{n} a_i + a_{n+1}\\
+        \sum_{i=m}^{n} a_i &= 0: n < m
+    \end{aligned}
+\]
+As a meta note, it seems like whenever it is a little bit tricky to define some mathematical `object' without a `$\dots$' symbol, it might be fairly straightforward to define the concept in terms of induction.
+(Another example of this: defining natural numbers as $0, 0 \increment, (0 \increment) \increment, \dots$ vs using induction). 
+
+\textbf{Lemma 7.1.4} 
+Some properties about summations:
+
+\begin{solution}
+    Most of these properties can be proven using induction on the number of elements in the summation.
+
+    (f):
+\begin{proof}
+    Induction on $n \geq m$.
+
+    Base case: $n=m$. Then we have:
+    \[
+        \begin{aligned}
+            \sum_{i=m}^{n} a_i &= \sum_{i=m}^{n-1}a_i + a_n && \text{def 7.1.1} \\
+            &= 0 + a_n && \text{(def 7.1.1) since } n-1 < m \\
+            &= a_n \\
+            &\leq b_n && \text{(assumption)} \\
+            &= 0 + b_n \\
+            &= \sum_{i=m}^{n-1}b_i + b_n && \text{(def 7.1.1)} \\
+            &= \sum_{i=m}^{n} b_i && \text{(def 7.1.1)}
+        \end{aligned}
+    \]
+
+    Inductive step:
+    Assume $\sum_{i=m}^{n} a_i \leq \sum_{i=m}^{n} b_i$.
+    Then:
+    \[
+        \begin{aligned}
+            \sum_{i=m}^{n+1} a_i &= \sum_{i=m}^{n} a_i + a_{n+1} && \text{(def 7.1.1)} \\
+            &\leq \sum_{i=m}^n b_i + a_{n+1} && \text{(inductive hyp)} \\
+            &\leq \sum_{i=m}^n b_i + b_{n+1} && \text{(assumption)} \\
+            &= \sum_{i=m}^{n+1} b_i && \text{(def 7.1.1)}
+        \end{aligned}
+    \]
+    And we are done.
+\end{proof}
+\end{solution}
+
+We define summations on set $M$ by giving each element $a \in M$ a value $f(a)$.
+To compute the summation over the set, we then have to somehow define a bijection $g: [n] = \{1 \leq i \leq n\} \to M$.
+Then $\sum_{x \in X}f(x) = \sum_{i=1}^{n} f(g(i))$.
+Property 7.1.8 shows that this is well-defined for the finite case.
+
+
+\textbf{Lemma 7.1.11} Basic properties of summation over finite sets:
+
+
+\begin{solution}
+
+    (a): If $X$ is empty and $f: X \to \mathbf{R}$ is a function, we have $\sum_{x \in X}f(x) = 0$.
+\begin{proof}
+    \[
+        \begin{aligned}
+            \sum_{x \in X} f(x) &= \sum_{i=1}^{0} f(g(i)) && \text{def 7.1.6} \\
+            &= 0 && \text{def 7.1.1}
+        \end{aligned}
+    \]
+\end{proof}
+(b): If $X$ is contains a single element $x_0$ and $f: X \to \mathbf{R}$ is a function, we have $\sum_{x \in X}f(x) = f(x_0)$.
+\begin{proof}
+    \[
+        \begin{aligned}
+            \sum_{x \in X} f(x) &= \sum_{i=1}^{1} f(g(i)) && \text{def 7.1.6} \\
+            &= f(g(1)) && \text{def 7.1.1}
+            &= f(x_0) && \text{def of $g: \{1\} \to X$}
+        \end{aligned}
+    \]
+\end{proof}
+(i): Let $X$ be a finite set and let $f: X \to \mathbf{R}$ be a function.
+Then: $|\sum_{x \in X} f(x)| \leq \sum_{x \in X}|f(x)|$
+\begin{proof}
+    \[
+        \begin{aligned}
+            |\sum_{x \in X} f(x)| &= |\sum_{i = 1}^{n}f(g(i))| && \text{def 7.1.6}\\ 
+            &\leq \sum_{i=1}^{n}|f(g(i))| && \text{prop 7.1.4e} \\
+            &= \sum_{x \in X} |f(x)| && \text{def 7.1.6}
+        \end{aligned}
+    \]
+\end{proof}
+\end{solution}
+
+\textbf{Lemma 7.1.13} Let $X,Y$ be finite sets with $f: X \times Y \to \mathbf{R}$ as a function.
+Then $\sum_{x \in X}(\sum_{y \in Y} f(x,y)) = \sum_{(x,y) \in X \times Y} f(x,y)$.
+
+Importantly, something about this proof must fail for infinite sets.
+(Apparently later on we will prove a similar lemma for infinite sets that only holds under certain convergence conditions.)
+
+When solving this, I neglected to think about using a proof by induction:
+I should have instantly considered that since the size of sets are natural numbers and that many of the previous proofs also used induction.
+
+\begin{solution}
+\begin{proof}
+    Induction on the size of set $Y$: $n_y$
+
+    Base case: $n_y=0$.
+    Then:
+    \[
+        \begin{aligned}
+            \sum_{x \in X}(\sum_{y \in Y}) &= \sum_{x \in X}0 && \text{(7.1.11a)} \\
+            &= \sum_{i=1}^{n_x} 0 && \text{def 7.1.6, $|X| = n_x$} \\ 
+            &= 0 \\
+        \end{aligned}
+    \]
+    Note that if $Y = \emptyset, X \times Y = \emptyset$, so $\sum_{(x,y) \in X \times Y} f(x,y) = 0 = \sum_{x \in X}(\sum_{y \in Y} f(x,y))$
+
+    Inductive step:
+    if this holds for $n_y=k$, consider $n_y=k+1$:
+    \[
+        \begin{aligned}
+            \sum_{x \in X}(\sum_{y \in Y} f(x,y)) &= \sum_{x \in X}(\sum_{y \in Y'}f(x,y) + f(x,y_0)) &&  (Y' = Y/{y_0}) \\
+            &= \sum_{x \in X}(\sum_{i=1}^k f(x, h(i)) + f(x, h(k+1))) && \text{lemma 7.1.6}\\
+            &= \sum_{j=1}^{n_x}(\sum_{i=1}^k f(h_x(j), h(i)) + f(h_x(j), h(k+1))) && \text{lemma 7.1.6}\\
+            &= \sum_{j=1}^{n_x}(\sum_{i=1}^k f(x, h(i))) + \sum_{j=1}^{n_x}f(x, h(k+1)) && \text{lemma 7.1.4c}\\
+            &=\sum_{x \in X} \sum_{y \in Y'} f(x,y) + \sum_{x \in X} f(x,y_0) && \text{lemma 7.1.6} \\
+            &= \sum_{(x,y) \in X \times Y'} f(x,y) \sum_{x \in X} f(x, y_0) && \text{inductive step} \\
+            &= \sum_{(x,y) \in X \times Y} f(x,y) + \sum_{(x,y)\in X \times \{y_0\}f(x,y)} && \text{strong induction? 7.1.11c?} \\
+            &= \sum_{(x,y) \in X \times Y} f(x,y) && \text{7.1.11e}
+        \end{aligned}
+    \]
+    And we are done.
+\end{proof}
+\end{solution}
 
 \section{Resources}
 Terence Tao: \href{https://terrytao.wordpress.com/books/analysis-i/}{Analysis 1}
