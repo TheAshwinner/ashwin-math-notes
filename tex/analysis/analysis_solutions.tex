@@ -518,6 +518,114 @@ I should have instantly considered that since the size of sets are natural numbe
 \end{proof}
 \end{solution}
 
+\subsection{Rearrangement of Series}
+The goal of this section is to develop a theory of when we can rearrange infinite series and still get the same value.
+It turns out that there are 2 useful lemmas regarding this.
+
+\textbf{Lemma 7.4.1}
+Let $\sum_{n=0}^{\infty} a_n$ be a convergent series of non-negative real numbers and $f: \mathbf{N} \to \mathbf{N}$ is a bijection.
+Then $\sum_{n=0}^{\infty} a_{f(n)}$ is convergent and has the same sum:
+\[
+    \sum_{n=0}^{\infty} a_n = \sum_{m=0}^{\infty} a_{f(n)}
+\]
+
+Note: something about this proof must be conditional on $a_n$ being non-negative.
+This is because $\sum_{n=1}^{\infty} \frac{{(-1)}^{n+1}}{n}$ converges by the alternating series test yet can be rearranged to get different values.
+
+\begin{solution}
+    Slightly sketchy proof, but it can be made a bit more formal.
+\begin{proof}
+    If $\sum_{n=0}^{\infty} a_n$ is convergent, then let's say that $\sum_{n=0}^{\infty} a_n = \lim_{N \to \infty} \sum_{n=0}^{N} a_n = L$.
+    Note that for any $M$ such that $\sum_{m=0}^{M} a_{f(m)}$, there is an $N$ such that $\sum_{n=0}^{N}a_n \geq \sum_{m=0}^{M} a_{f(m)}$.
+    (This can be shown using induction probably while using the fact that $a_n$ must be non-negative).
+
+    But this means that $\sum_{m=0}^{M} a_{f(n)}$ is bounded by $L$ from above for all values $M$, and it is bounded by 0 from below since all values are non-negative.
+    Therefore by proposition 6.3.8 (monotone bounded sequences converge), we have that $\sum_{m=0}^{\infty}a_{f(m)}$ converges.
+
+    Essentially, we now have that $\sum_{m=0}^{\infty} a_{f(m)} \leq \sum_{n=0}^{\infty} a_n$.
+    The reverse direction should probably be similar to prove (maybe using the fact that $f$ is a bijection).
+\end{proof}
+\end{solution}
+
+\textbf{Lemma 7.4.3}
+Let $\sum_{n=0}^{\infty} a_n$ be an absolutely convergent series of real numbers and $f: \mathbf{N} \to \mathbf{N}$ is a bijection.
+Then $\sum_{n=0}^{\infty} a_{f(n)}$ is absolutely convergent and has the same sum:
+\[
+    \sum_{n=0}^{\infty} a_n = \sum_{m=0}^{\infty} a_{f(n)}
+\]
+
+As before, something about this proof requires the absolute convergent condition.
+This is because $\sum_{n=1}^{\infty} \frac{{(-1)}^{n+1}}{n}$ is conditionally convergent yet the sum can be rearranged to get different values.
+
+\begin{solution}
+    This proof is slightly complicated.
+    (It took multiple readings for me).
+    \begin{proof}
+        It's fairly simple to show that $\sum_{n=0}^{\infty} a_{f(n)}$ must be absolutely convergent.
+        Absolute convergence means that $\sum_{n=0}^{\infty} |a_n|$ converges.
+        We have by prop 7.4.1 that then $\sum_{m=0}^{\infty} |a_{f(m)}|$ must converge.
+        (This is because each term is non-negative).
+        Therefore $\sum_{n=0}^{\infty} a_{f(n)}$ is absolutely convergent.
+
+        The difficult part is showing that the two series have the same sum.
+        Let's say that $\sum_{n=1}^{\infty} a_n = L$.
+        We know that $\sum_{n=1}^{\infty} |a_n|$ converges.
+        Our end goal is the following: we want to show that for all $\epsilon > 0$ there exists  $M$ such that for all $M' > M: |\sum_{m=1}^{M'} a_{f(m)} -L| < \epsilon$ (basically that the sum converges to $L$).
+
+        The key insight is that $\sum_{m=1}^{M'} a_{f(m)}$ can be made arbitrarily close to $\sum_{n=1}^{N'} a_n$, which is arbitrarily close to $L$.
+
+        We know that for all $\epsilon >0$, there exists $N_1$ such that for all $N'> N_1$, 
+        \[
+            \left | \sum_{n=1}^{N'}a_n - L \right | < \epsilon
+        \]
+        This comes from the definition of convergence of the series $\sum_{n=1}^{\infty} a_n$.
+        Note that this means that we can take any $\frac{\epsilon}{2}$ and find $N_1$ such that for all $N' \geq N$, 
+        \begin{align*}
+        \left | \sum_{n=1}^{N'} a_n - L \right |  < \frac{\epsilon}{2} && (1)
+        \end{align*}
+
+        We also need to pick $N_2$ such that for all $j,k > N_2$, 
+        \begin{align*}
+            \left | \sum_{n=j}^k a_n \right | < \frac{\epsilon}{2} && (2)
+        \end{align*}
+
+        Note that this is only possible because $\sum_{n=1}^{\infty} |a_n|$ is convergent and from prop 7.2.5.
+        Now simply take $N = \max(N_1, N_2)$.
+        (What we essentially just did is pick a value for $N$ such that both (1) and (2) are simultaneously satisfied.)
+
+        Take $M = \max(f^{-1}(n))_{n=1}^{N}$.
+        Note that 
+        \[
+            \sum_{n=1}^{M} a_{f(m)} = \sum_{n=1}^{N} a_n + \sum_{x \in X} a_x
+        \]
+        where 
+        \[
+            X = \{ f(m): 1 \leq n \leq N\} / \{ n: 1 \leq n \leq N\}
+        \]
+
+        Another key insight here:
+        every term in $\sum_{n=1}^{N}a_n$ should also be in $\sum_{m=1}^{M} a_{f_m}$.
+        (Indeed, we pick $M$ specifically such that this condition is satisfied.)
+
+        So now:
+        \begin{align*}
+            \left | \sum_{m=1}^{M} a_{f(m)} - L \right | &= \left | \sum_{n=1}^{N} a_n + \sum_{x \in X} a_x - L \right | \\
+            &\leq \left | \sum_{n=1}^{N} a_n -L \right | + \left | \sum_{x \in X} a_x \right | && \text{(triangle inequality)}\\
+            &\leq \frac{\epsilon}{2} + \left | \sum_{x \in X} a_x \right | && \text{(1) from above} \\
+            &\leq \frac{\epsilon}{2} + \left | \sum_{n=N+1}^{M} a_n \right | && \text{(3)}\\
+            &\leq \frac{\epsilon}{2} + \sum_{n=N+1}^{M} \left | a_n \right | && \text{(absolute convergence test)}\\
+            &\leq \frac{\epsilon}{2} + \frac{\epsilon}{2} && \text{(2) from above} \\
+            &= \epsilon
+        \end{align*}
+        where (3) holds because $X \subseteq \{m: 1 \leq m \leq M \}$.
+
+        Note that we're done.
+    \end{proof}
+    The reason this proof fails for conditional convergence is because we cannot bound $\sum_{N+1}^{M} |a_n|$ by $\frac{\epsilon}{2}$ if $\sum_{n=1}^{\infty} |a_n|$ does not converge.
+    For example, consider a conditionally convergent series $\sum_{n=1}^{\infty} \frac{1}{n}$.
+    $\frac{1}{N+1} + \frac{1}{N+2} + \cdots + \frac{1}{M}$ can be arbitrarily large which means that we can't necessarily bound the expression by some $\frac{\epsilon}{2}$.
+\end{solution}
+
 \section{Resources}
 Terence Tao: \href{https://terrytao.wordpress.com/books/analysis-i/}{Analysis 1}
 
