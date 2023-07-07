@@ -179,12 +179,27 @@ For rationals, we can describe a Cauchy sequence that converges to no rational v
 For reals, any Cauchy sequence will converge.
 This is a crucial distinction between the two number systems.
 
-The other major theorem that is included in section 6.6 is the Bolzano-Weierstrass theorem (theorem 6.6.8).
+Another major theorem that is included in section 6.6 is the Bolzano-Weierstrass theorem (theorem 6.6.8).
 This theorem basically says that for a bounded sequence, there is a subsequence that converges.
 This should make some intuitive sense: if a sequence is bounded, there is not enough `room' to spread out indefinitely, so at least some fraction of the total space must have arbitrarily many elements of the sequence.
 That is the subsequence that converges (of which there must be at least 1, though there may be more).
 This is a precursor to notions of compactness and the Heine-Borel theorem that I expect to appear later on.
 
+A third theorem/lemma that is quite important is the squeeze theorem.
+This will allow us to find the limit of many types of functions.
+
 The final section 6.7 completes the definition of real exponentiation.
+
+\section{Series}
+
+
+\section{Infinite sets}
+Zorn's lemma is particularly interesting.
+The key idea is that often we want to construct some maximal object and it turns out that this might take countably infinite or uncountably many steps.
+Of course if this just takes finitely many steps, there is no problem (you can use induction to prove whatever you like).
+However, these sorts of induction proofs can't help if you need to take countable or uncountably many steps.
+The idea is that if we're able to construct some non-empty partially ordered set (poset) $X$ with each non-empty totally ordered subset (chain) $Y \subset X$ having some upper bound, then there is at least one maximal element of $X$.
+Notice that we didn't say anything about the cardinality of $Y$: for all we care, $Y$ can be finite, countably infinite, uncountable and as long as it has an upper bound, we are happy.
+See \href{https://gowers.wordpress.com/2008/08/12/how-to-use-zorns-lemma/}{Tim Gower's blog} for a great explanation of this.
 
 \end{document}
