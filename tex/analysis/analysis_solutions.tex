@@ -438,6 +438,12 @@ We continue defining exponentiation for reals.
 
 \section{Series}
 The goal of this section is to develop a coherent theory of the limit of sequences.
+
+\subsection{Finite series}
+We start by discussing series of finite sequences and finite sets.
+This section seems a bit tedious, but it's important to note that many of these theorems and lemmas do not hold for countably infinite or uncountable sums!
+So it is crucial to be as explicit as possible with all of the assumptions and conditions needed.
+
 We define a series as the following:
 \[
     \begin{aligned}
@@ -447,6 +453,10 @@ We define a series as the following:
 \]
 As a meta note, it seems like whenever it is a little bit tricky to define some mathematical `object' without a `$\dots$' symbol, it might be fairly straightforward to define the concept in terms of induction.
 (Another example of this: defining natural numbers as $0, 0 \increment, (0 \increment) \increment, \dots$ vs using induction). 
+
+Following this, we can then prove a few basic lemmas about properties of series (lemma 7.1.4).
+Using this definition of series of finite sequences, we can then define a summation over a finite set $E$ by defining a bijective mapping $g^{-1}$ for each element $x \in E$ to an integer $i$, with $g(i) = x$.
+This is followed by proving a few propositions and lemmas about finite summations of sets (well-definedness: proposition 7.1.8, summation laws: 7.1.11, summation of cartesian products: lemma 7.1.13, fubini's theorem for finite series: corollary 7.1.14). 
 
 \textbf{Lemma 7.1.4} 
 Some properties about summations:
@@ -570,6 +580,25 @@ I should have instantly considered that since the size of sets are natural numbe
     And we are done.
 \end{proof}
 \end{solution}
+
+\subsection{Infinite series}
+We now introduce summations of countably infinite terms.
+We formalize this by taking the limit of a finite series.
+Essentially this means that $\sum_{n=1}^{\infty} a_n = \lim_{N \to \infty} \sum_{n=1}^{N}$.
+By being explicit about how we formalize infinite sums, it becomes clear that an infinite summation is only meaningful if it converges as $N \to \infty$.
+
+The remainder of this section discusses conditions to determine if a series will converge or diverge (zero test, absolute convergence test, alternating series test, telescoping series) as well as generally useful lemmas/propositions (series laws).
+
+It's in this section where we're starting to see the full power of what analysis has to offer, as many of these conditions may not be obvious without defining finite and infinite series formally.
+
+\subsection{Sums of non-negative numbers}
+If we restrict summations to non-negative numbers, we can find a few interesting properties.
+Note that the summations will be monotone, so if they're bounded, they will converge (this is prop 7.3.1).
+A few other useful properties and tests of convergence come up: the comparison test, Cauchy criterion.
+The Cauchy criterion is particularly interesting: given only a fraction of the elements in a sequence, we can determine if the whole series is convergent or not as well as give rough bounds to what value it converges to.
+
+Using these new properties, we are able to say more about series like geometric series, harmonic series about when they converge/diverge.
+These are fundamental series that show up often in math.
 
 \subsection{Rearrangement of Series}
 The goal of this section is to develop a theory of when we can rearrange infinite series and still get the same value.
