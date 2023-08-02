@@ -191,7 +191,36 @@ This will allow us to find the limit of many types of functions.
 The final section 6.7 completes the definition of real exponentiation.
 
 \section{Series}
+The purpose of this section is to develop a coherent theory of the limit of sequences.
 
+This chapter begins with the finite series and defines it inductively before proceeding to prove a number of intuitive properties.
+(This includes summation properties: lemma 7.1.4, well-definedness: prop 7.1.8, summation laws: 7.1.11, summation of cartesian products: lemma 7.1.13, fubini's theorem for finite series: corollary 7.1.14).
+These might seem tedious or redundant, but the reason they are worth studying in depth is because many of them break down for infinite summations!
+For example: it may be obvious that if you rearrange a finite series, that the summation will be the same.
+However, this is not necessarily true for infinite series, even if the series as a whole converges!
+(Note how strange this sounds: there are infinite series that converge to a sum, but if you rearrange their terms, they might still converge but to another value.
+This is where the notion of conditional versus absolute convergence come up.)
+
+The following section dives into summations of countably infinite terms.
+This is formalized by taking the limit of a finite series: $\lim_{N \to \infty} \sum_{n=1}^N a_n$.
+The remainder of this section discusses conditions to determine if a series will converge or diverge (zero test, absolute convergence test, alternating series test, telescoping series) as well as generally useful lemmas/propositions (series laws).
+It's in this section where we're starting to see the full power of what analysis has to offer, as many of these conditions may not be obvious without defining finite and infinite series formally.
+
+Section 7.3 covers summations of non-negative numbers.
+It turns out that these often have interesting properties.
+Since a summation of non-negative numbers will be monotonically non-decreasing, if it is bounded, it will converge (prop 7.3.1).
+The Cauchy criterion is particularly interesting: given only a fraction of the elements in a sequence, we can determine if the whole series is convergent or not as well as give rough bounds to what value it converges to.
+Using these new properties, we are able to say more about series like geometric series, harmonic series about when they converge/diverge.
+These are fundamental series that show up often in math.
+
+The goal of this section is to develop a theory of when we can rearrange infinite series and still get the same value.
+It turns out that there are 2 useful lemmas regarding this.
+Lemma 7.4.1 says that a convergent series of non-negative real numbers will always rearrange to the same sum, and lemma 7.4.3 says that an absolutely convergent series of real numbers will rearrange to the same sum.
+Note the counterexample $\frac{1}{3} - \frac{1}{4} + \frac{1}{5} - \frac{1}{6}\cdots$.
+It turns out you can rearrange this to any possible value.
+
+The last section introduces the root and ratio test, which is useful for determining more limits.
+Specifically, we can now compute $\lim_{n \to \infty} n^{1/n}=1$.
 
 \section{Infinite sets}
 Zorn's lemma is particularly interesting.
