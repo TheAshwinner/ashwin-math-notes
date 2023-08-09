@@ -742,6 +742,24 @@ It's apparently useful for proving that $\frac{d}{dx} x^c = cx^{c-1}$ when $c$ i
 We prove L'H\^opital's Rule.
 This is a useful rule to find limits that comes up a few times in an intro calculus class (such as for dealing with limits like $\lim_{x \to 0} \frac{\sin(x)}{x}$).
 
+\section{The Riemann Integral}
+The goal of this chapter is to work our way up to defining the Riemann integral.
+
+\subsection{Partitions}
+The first section discusses partitions and how one can partition a large interval into smaller intervals.
+We define an introductory notion of connectedness, prove that bounded intervals are equivalent to bounded and connected sets, and show that the length of an interval must be equal to the sum of the lengths of the intervals in the partition.
+All of these are pretty intuitive and proving them isn't particularly difficult, but it's necessary to make things rigorous.
+
+\subsection{Piecewise constant functions}
+This section introduces piecewise constant functions as a particularly easy type of function to integrate.
+The basic idea here is that if you have a function $f$ defined on some interval $I$, and there is some partition $P$ of that interval into smaller intervals $J \in P$ such that $f$ is constant on each of those smaller intervals, then the integral will basically be $\int_{I} f = \int_{P} f = \int_{J \in P} c_J |J|$. (Definition 11.2.9)
+
+To ensure that this is well-defined, we have to ensure that this value is equal regardless of which partition is chosen.
+(Prop 11.2.13)
+(As well as dealing with edge cases like if the interval is empty or a single point, both of which turn out to have integral 0).
+
+This section concludes with the laws of integration over piecewise constant functions.
+
 \section{Resources}
 Terence Tao: \href{https://terrytao.wordpress.com/books/analysis-i/}{Analysis 1}
 
