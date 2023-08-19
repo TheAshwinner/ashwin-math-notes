@@ -780,6 +780,24 @@ This was surprising to me.
 It turns out that monotone functions are Riemann integrable under specific conditions (domain is closed or function is bounded).
 Note that the function does not need to be continuous
 
+\subsection{Non-Riemann Integrable Function}
+It's $f(x) = \begin{cases} 0: x \in \mathbf{Q} \\ 1: x \in \mathbf{R}/\mathbf{Q} \end{cases}$.
+
+\subsection{Riemann-Stieltjes Integral}
+When constructing a piecewise RS integral, we do something slightly different.
+Instead of $p.c. \int_{[P]} f:= \sum_{J \in \mathbf{P}} c_J|J|$ as with Riemann integrals, we do $p.c. \int_{[P]} f\, d\alpha := \sum_{J \in \mathbf{P}} c_J \alpha(J)$.
+Note that the former is a special case of the latter when $\alpha(J) = |J|$.
+It's unclear exactly what this generalization is useful for, but we're able to demonstrate many of the previous theorems of Riemann integrals with these Riemann-Stieltjes integrals.
+
+\subsection{The Two Fundamental Theorems of Calculus}
+These two theorems connect integration and differentiation (the integral of the derivative and the derivative of the integral).
+
+The first theorem states that if $a < b$, $f:[a,b] \to \mathbf{R}$ is a Riemann integrable function, and $F:[a,b] \to \mathbf{R}$, is the function $F(x) = \int_{[a,b]} f$, then $F$ is continuous.
+Additionally, if $x_0 \in [a,b]$ and $f$ is continuous at $x_0$, then $F$ is differentiable at $x_0$ and $F'(x_0) = f(x_0)$.
+Informally, this is saying that $(\int_{[a,b]}f)'(x) = f(x)$.
+
+The second theorem states that if $a \leq b$, $f: [a,b] \to \mathbf{R}$ is Riemann integrable, and $F: [a,b] \to \mathbf{R}$ is antiderivative of $f$, then $\int_{[a,b]}f = F(b)-F(a)$.
+
 \section{Resources}
 Terence Tao: \href{https://terrytao.wordpress.com/books/analysis-i/}{Analysis 1}
 
