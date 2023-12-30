@@ -1,7 +1,7 @@
 \documentclass[answers,12pt]{exam}
 \usepackage[utf8]{inputenc, xcolor}
 \usepackage{hyperref}
-\usepackage{amsmath,empheq,amsfonts,amssymb}
+\usepackage{amsmath,empheq,amsfonts,amssymb, amsthm}
 \usepackage{float}
 \usepackage{enumitem}
 \usepackage[]{mdframed}
@@ -9,6 +9,9 @@
 \usepackage[normalem]{ulem}
 \newcommand{\suchthat}{\text{ s.t. }}
 
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{example}{Example}[section]
 
 \title{Functional Analysis Notes}
 \author{Ashwin Sreevatsa}
@@ -24,8 +27,52 @@ This is meant to be a first pass at understanding the core ideas an concepts in 
 I'll likely end up working through Introductory Functional Analysis with Applications by Kreyzsig or Functional Analysis by Rudin in the future.
 
 
-\pagebreak
+\section{Lecture 1: Basic Banach Space Theory}
+\href{https://ocw.mit.edu/courses/18-102-introduction-to-functional-analysis-spring-2021/resources/18102-sp21-lecture-1/}{Lecture video link}
 
+One of the motivations for functional analysis as a subject was to extends methods from analysis and linear algebra to infinite dimensions.
+This includes solving equations with infinitely many unknown variables.
 
+For example, consider the problem of finding the shortest curve between two points under some set of constraints.
+This is a natural problem where we have an (uncountably) infinite number of unknown variables that we would like to solve.
+
+It seems that tools from functional analysis play a very heavy role in the study of differential equations.
+
+\subsection{Normed Spaces}
+We start with a quick definition of vector spaces.
+
+\begin{definition}[Vector space]
+    A vector space over a field $\mathbb{F}$ is a non-empty set $V$ with two operations: vector addition $+ : V \times V \to V$ and scalar multiplication $\cdot: \mathbb{F} \times V \to V$.
+    These operations satisfy the following axioms:
+    \begin{enumerate}
+        \item Associativity of vector addition: $u + (v + w) = (u + v) + w$ for all $u, v, w \in V$.
+        \item Commutativity of vector addition: $u + v = v + u$ for all $u, v \in V$
+        \item Identity element of vector addition: there exists $0 \in V$ such that $x + 0 = x$ for all $x \in V$
+        \item Additive inverse: for any $x \in V$ there must exist $y \in V$ such that $x+y=0$.
+        \item Multiplicative identity: there exists $1 \in V$ such that for all $x \in V$, $x \cdot 1 = x$.
+        \item Associativity of scalar and field multiplication: for all $a, b \in \mathbb{F}$ and $v \in V$, we have $a \cdot (b \cdot v) = (a \cdot b) \cdot v$
+        \item Distributivity of scalar multiplication across vector addition: for all $a \in \mathbb{F}, x,y \in V$, we have $a \cdot (x+y) = a \cdot x + a \cdot y$.
+        \item Distributivity of scalar multiplication across field addition: for all $a,b \in \mathbb{F}, x \in V$, we have $(a + b) \cdot x = a \cdot x + b \cdot x$.
+    \end{enumerate}
+\end{definition}
+
+\begin{example}[Examples of vector spaces]
+    $\mathbb{R}^n, \mathbb{C}^n$
+    
+    The set of continuous compact complex functions is also a vector space (why?)
+    \[
+        C([0,1]) = \big\{ f: [0,1] \to \mathbb{C} \mid f \text{ is continuous} \big\}
+    \]
+\end{example}
+
+\begin{definition}[Finitely dimensional vector space]
+    A vector space $V$ is finitely dimensional if every linearly independent set is a finite set.    
+\end{definition}
+
+Note that $C([0,1])$ is not finitely dimensional.
+Consider the set of functions \[\{1, x, x^2, x^3, \dots \}\]
+Each element is within $C([0,1])$ and is linearly independent yet the set is not a finite set.
+
+Definition 1.2 provides a notion for why vector spaces like $\mathbb{C}^n$ and $C([0,1])$ are different: the former is finitely dimensional while the latter is not.
 
 \end{document}
