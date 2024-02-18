@@ -1,0 +1,49 @@
+\documentclass[answers,12pt]{exam}
+\usepackage[utf8]{inputenc, xcolor}
+\usepackage{hyperref}
+\usepackage{amsmath,empheq,amsfonts,amssymb, amsthm}
+\usepackage{float}
+\usepackage{enumitem}
+\usepackage[]{mdframed}
+\usepackage{todonotes}
+\usepackage[normalem]{ulem}
+\newcommand{\suchthat}{\text{ s.t. }}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{example}{Example}[section]
+\newtheorem{theorem}{Theorem}
+
+\title{Mathematical Inequalities Notes}
+\author{Ashwin Sreevatsa}
+\date{February 2023}
+
+\begin{document}
+
+\maketitle
+
+\section*{Quick Remarks}
+This document is meant to contain notes on various interesting inequalities that I come across.
+
+
+\section{Inequalities}
+
+\subsection{Cauchy-Schwarz}
+This comes up very often in a huge variety of subjects.
+\begin{theorem}[Cauchy-Schwarz Inequality]
+    Let $u,v \in \mathbb{R}^n$. Then $\langle u, v \rangle \leq \lVert u \rVert_2 \lVert v \rVert_2 $
+\end{theorem}
+
+\begin{proof}
+    \[
+        \begin{aligned}
+            \langle u, v \rangle^2 &= {\Big(\sum_{i=1}^n u_i v_i \Big)}^2 \\
+            &= \sum_{i=1}^n u_i^2 v_i^2 + \sum_{i \neq j} u_i v_i u_j v_j \\
+            &\leq \sum_{1 \leq i,j \leq n} u_i^2 v_j^2 && \text{(AM-GM inequality)}\\
+            &= \lVert u \rVert_2^2 \lVert v \rVert_2^2
+        \end{aligned}
+    \]
+    So we have $\langle u, v \rangle \leq \lVert u \rVert_2 \lVert v \rVert_2 $
+\end{proof}
+
+\end{document}
